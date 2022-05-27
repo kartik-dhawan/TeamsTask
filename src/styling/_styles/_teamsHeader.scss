@@ -1,0 +1,19 @@
+.teamsHeader{
+    background-color: map-get($bg-colors, 'primary');
+    color: map-get($colors, 'primary');
+    height: max-content;
+    @include center-flex(column);
+    box-sizing: border-box;
+    padding: map-get($paddings, 'm');
+    .teamsHeaderContent{
+        box-sizing: border-box;
+        margin: map-get($margins, 'm');
+        padding: map-get($paddings, 'm');
+        @include center-flex(column);
+        .teamsHeaderTitle{
+            text-align: center;
+            font-size: 18px;
+            font-weight: 400;
+        }
+    }
+}

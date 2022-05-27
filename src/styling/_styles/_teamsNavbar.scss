@@ -1,0 +1,67 @@
+.teamsNavbar{
+    @include center-flex(row);
+    justify-content: space-between;
+    height: 7vh;
+    background-color: map-get($bg-colors, 'secondary');
+    .navHead{
+        @include center-flex(row);
+        .navMenu{
+            margin: $base-margin;
+            padding: $base-padding;
+            font-size: $base-fontsize * 2.3;
+            color: map-get($bg-colors, 'third');
+            cursor: pointer;
+        }
+        .navTitle{
+            cursor: pointer;
+            @include center-grid;
+            grid-template-areas: 
+                                "teams task"
+                                "T task";
+            box-sizing: border-box;
+            margin: $base-margin;
+            #navMainTitle1{
+                @include center-flex(row);
+                grid-area: teams;
+                font-size: $base-fontsize * 1.2;
+                margin: 0;
+                height: 2vh;
+                color: map-get($colors, 'secondary');
+            }
+            #navMainTitle2{
+                margin: 0;
+                margin-left: $base-margin * 0.6;
+                grid-area: task;
+                font-size: $base-fontsize * 2.5;
+                height: 4vh;
+                color: map-get($colors, 'navy');
+            }
+            #navTitleIcon{
+                @include center-flex(row);
+                margin: 0;
+                padding: 0;
+                grid-area: T;
+                height: 1.5vh;
+                font-size: $base-fontsize * 0.85;
+                font-weight: 600;
+                color: map-get($colors, 'primary');
+                background-color: map-get($bg-colors, 'third');
+            }
+        }
+    }
+    .navLogout{
+        border: 2px solid map-get($colors, 'third');
+        border-radius: 20px;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        color: map-get($colors, 'third');;
+        padding: $base-padding map-get($map: $paddings, $key: 'sm');
+        margin: $base-margin map-get($map: $margins, $key: 'sm');
+        transition: all 300ms ease-in-out;
+        cursor: pointer;
+        &:hover{
+            background-color: map-get($bg-colors, 'third');;
+            color: map-get($colors, 'primary');;
+        }
+    }
+}
