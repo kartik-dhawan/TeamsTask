@@ -7,21 +7,20 @@ import { getData } from "../redux/reducers/apiSlice";
 import { RootType } from "../redux/store/store";
 
 const HomePage = () => {
-  const photos = useSelector((state: RootType) => state.user.data);
+  const datalog = useSelector((state: RootType) => state.data.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getData());
   }, [dispatch]);
 
-  console.log(photos[1]);
+  console.log(datalog[1]);
 
   return (
     <div>
       <TeamsHeader />
       <TeamsDataTable />
       <Outlet />
-      <h1>h</h1>
     </div>
   );
 };

@@ -1,18 +1,18 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// initial state and its type
-interface dataType {
+// initializing the initial state
+interface DataState {
   data: any[];
   isLoading: boolean;
 }
 
-const initialState: dataType = {
+const initialState: DataState = {
   data: [],
   isLoading: false,
 };
 
-// thunk function
+// creating the async thunk
 export const getData: any = createAsyncThunk("data/getData", async () => {
   return axios({
     method: "get",
@@ -21,24 +21,20 @@ export const getData: any = createAsyncThunk("data/getData", async () => {
 });
 
 const apiSlice = createSlice({
-  name: "data",
+  name: "api-data",
   initialState,
   reducers: {},
-  // defining the thunk's actions
-  // thunk actions are defined in 'extraReducers' attribute
   extraReducers: {
-    [getData.pending]: (state: dataType) => {
+    [getData.pending]: (state: DataState) => {
       state.isLoading = true;
     },
-    [getData.fulfilled]: (state: dataType, action: PayloadAction<any>) => {
+    [getData.fulfilled]: (state: DataState, action: PayloadAction<any>) => {
       state.data = action.payload;
-      state.isLoading = false;
     },
-    [getData.rejected]: (state: dataType) => {
+    [getData.rejected]: (state: DataState) => {
       state.isLoading = false;
     },
   },
 });
 
-// importing the reducer
 export default apiSlice.reducer;
