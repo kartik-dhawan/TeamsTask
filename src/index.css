@@ -188,6 +188,64 @@
   font-weight: 400;
 }
 
+.data-table {
+  background-color: rgba(236, 236, 234, 0.695);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 60vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: "column";
+          flex-direction: "column";
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.data-table .uniData {
+  overflow-x: scroll;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 10px;
+  max-width: 65rem;
+}
+
+.data-table .uniData .uniTable .uniTableHead {
+  background-color: #1f3a93;
+}
+
+.data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn {
+  font-size: 15px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 20px 0px;
+  color: white;
+  font-weight: 400;
+}
+
+.data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn:first-child {
+  padding: 0px 0px;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 13.7px;
+  padding: 20px 0px;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:first-child {
+  padding: 0px 0px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;

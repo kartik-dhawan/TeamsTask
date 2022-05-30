@@ -5,9 +5,10 @@
 
 
 // responsive style import
-
+@import './utilities/responsive';
 
 // component style imports
 @import './_styles/teamsNavbar';
 @import './_styles//teamsHeader';
+@import './_styles/teamsDataTable';
 

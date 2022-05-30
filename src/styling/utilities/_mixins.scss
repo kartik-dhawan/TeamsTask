@@ -10,3 +10,11 @@
     justify-content: center;
     align-items: center;
 }
+
+@mixin padding($type){
+    padding: map-get($paddings, "#{$type}");
+}
+
+@mixin margin($type){
+    margin: map-get($margins, "#{$type}");
+}
