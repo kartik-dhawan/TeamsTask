@@ -21,6 +21,7 @@ const HomePage = () => {
       <TeamsHeader />
       <TeamsDataTable />
       <Outlet />
+      <h1>h</h1>
     </div>
   );
 };
