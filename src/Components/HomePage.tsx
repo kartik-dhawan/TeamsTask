@@ -5,11 +5,11 @@ import TeamsDataTable from "./HomeComponents/TeamsDataTable";
 
 const HomePage = () => {
   return (
-    <div>
+    <>
       <TeamsHeader />
       <TeamsDataTable />
       <Outlet />
-    </div>
+    </>
   );
 };
 

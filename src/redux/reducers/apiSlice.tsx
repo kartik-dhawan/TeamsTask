@@ -30,6 +30,7 @@ const apiSlice = createSlice({
     },
     [getData.fulfilled]: (state: DataState, action: PayloadAction<any>) => {
       state.data = action.payload;
+      state.isLoading = false;
     },
     [getData.rejected]: (state: DataState) => {
       state.isLoading = false;

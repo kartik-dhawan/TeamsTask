@@ -20,6 +20,7 @@ import { KeyboardArrowRight, KeyboardArrowLeft } from "@mui/icons-material";
 import FirstPageIcon from "@mui/icons-material/FirstPage";
 import LastPageIcon from "@mui/icons-material/LastPage";
 
+// pagination
 interface TablePaginationActionsProps {
   count: number;
   page: number;
@@ -100,10 +101,18 @@ function TablePaginationActions(props: TablePaginationActionsProps) {
   );
 }
 
+// actual data table
+
 const TeamsDataTable = () => {
   const theme = useTheme();
 
-  const datalog = useSelector((state: RootType) => state.data.data).slice(0, 6);
+  const datalog = useSelector((state: RootType) => state.data.data).slice(
+    0,
+    50
+  );
+
+  const loader = useSelector((state: RootType) => state.data.isLoading);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -158,6 +167,7 @@ const TeamsDataTable = () => {
               </TableCell>
             </TableRow>
           </TableHead>
+
           <TableBody className="uniTableBody">
             {(rowsPerPage > 0
               ? datalog.slice(
@@ -196,27 +206,40 @@ const TeamsDataTable = () => {
               </TableRow>
             )}
           </TableBody>
-          <TableFooter>
-            <TableRow>
-              <TablePagination
-                rowsPerPageOptions={[6, 10, 14, { label: "All", value: -1 }]}
-                colSpan={3}
-                count={datalog.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                SelectProps={{
-                  inputProps: {
-                    "aria-label": "rows per page",
-                  },
-                  native: true,
-                }}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-                ActionsComponent={TablePaginationActions}
-              />
-            </TableRow>
-          </TableFooter>
+          {loader ? (
+            ""
+          ) : (
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[6, 10, 14, { label: "All", value: -1 }]}
+                  colSpan={3}
+                  count={datalog.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: {
+                      "aria-label": "rows per page",
+                    },
+                    native: true,
+                  }}
+                  onPageChange={handleChangePage}
+                  onRowsPerPageChange={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            </TableFooter>
+          )}
         </Table>
+        {loader ? (
+          <div className="loader">
+            <span className="circle"></span>
+            <span className="circle"></span>
+            <span className="circle"></span>
+          </div>
+        ) : (
+          ""
+        )}
       </TableContainer>
     </div>
   );

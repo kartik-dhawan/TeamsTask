@@ -1,12 +1,12 @@
 .data-table{
     background-color: map-get($map: $bg-colors, $key: 'secondary');
     box-sizing: border-box;
-    height: 60vh;
+    height: max-content;
     @include center-flex('column');
     .uniData{
         overflow-x: scroll;
         box-sizing: border-box;
-        margin: 10px;
+        margin: 20px 10px;
         max-width: 65rem;
         .uniTable{
             .uniTableHead{
@@ -28,7 +28,7 @@
                 .uniTableRow{
                     .uniColumn{
                         width: max-content;
-                        font-size: 13.7px;
+                        font-size: 14px;
                         padding: 20px 0px;
                         &:first-child{
                             padding: 0px 0px;
