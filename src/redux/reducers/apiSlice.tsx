@@ -28,7 +28,7 @@ const apiSlice = createSlice({
     [getData.pending]: (state: DataState) => {
       state.isLoading = true;
     },
-    [getData.fulfilled]: (state: DataState, action: PayloadAction<any>) => {
+    [getData.fulfilled]: (state: DataState, action: PayloadAction<any[]>) => {
       state.data = action.payload;
       state.isLoading = false;
     },

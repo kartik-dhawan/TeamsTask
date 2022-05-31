@@ -446,11 +446,6 @@
   margin: 0;
 }
 
-.searchSection .globalSearch .searchLabel {
-  color: #1f3a93;
-  font-size: 15px;
-}
-
 .searchSection .globalSearch .searchInput {
   margin: 0;
   border-radius: 27px;

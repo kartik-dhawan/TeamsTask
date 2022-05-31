@@ -7,7 +7,6 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableFooter,
   TableHead,
   TablePagination,
   TableRow,
@@ -106,10 +105,8 @@ function TablePaginationActions(props: TablePaginationActionsProps) {
 const TeamsDataTable = () => {
   const theme = useTheme();
 
-  const datalog = useSelector((state: RootType) => state.data.data).slice(
-    0,
-    50
-  );
+  const datalog = useSelector((state: RootType) => state.search.updatedData);
+  // console.log(datalog);
 
   const loader = useSelector((state: RootType) => state.data.isLoading);
 
@@ -117,7 +114,7 @@ const TeamsDataTable = () => {
 
   useEffect(() => {
     dispatch(getData());
-  }, []);
+  }, [dispatch]);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -246,30 +243,6 @@ const TeamsDataTable = () => {
               </TableRow>
             )}
           </TableBody>
-          {/* {loader ? (
-            ""
-          ) : (
-            <TableFooter className="uniTableFoot">
-              <TableRow className="pagination">
-                <TablePagination
-                  rowsPerPageOptions={[6, 10, 14, { label: "All", value: -1 }]}
-                  colSpan={3}
-                  count={datalog.length}
-                  rowsPerPage={rowsPerPage}
-                  page={page}
-                  SelectProps={{
-                    inputProps: {
-                      "aria-label": "rows per page",
-                    },
-                    native: true,
-                  }}
-                  onPageChange={handleChangePage}
-                  onRowsPerPageChange={handleChangeRowsPerPage}
-                  ActionsComponent={TablePaginationActions}
-                />
-              </TableRow>
-            </TableFooter>
-          )} */}
         </Table>
         {loader ? (
           <div className="loader">
