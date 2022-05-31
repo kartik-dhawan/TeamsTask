@@ -19,23 +19,24 @@ const GlobalSearch = () => {
     50
   );
 
-  //   const searchData = useSelector((state: RootType) => state.search.updatedData);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getData());
-  }, [dispatch]);
+  }, []);
 
-  //   dispatch(updateData(datalog));
   let updatedData: any[];
 
-  if (search === "") {
-    updatedData = datalog;
-  } else {
+  if (search) {
     updatedData = datalog.filter((row) => {
-      return row.name.toLowerCase().includes(search.toLowerCase());
+      return (
+        row.name.toLowerCase().includes(search.toLowerCase()) ||
+        row.domains[0].toLowerCase().includes(search.toLowerCase())
+      );
     });
+  } else {
+    updatedData = datalog;
+    dispatch(updateData(updatedData));
   }
 
   return (

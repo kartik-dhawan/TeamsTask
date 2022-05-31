@@ -106,11 +106,11 @@ const TeamsDataTable = () => {
   const theme = useTheme();
 
   const datalog = useSelector((state: RootType) => state.search.updatedData);
-  // console.log(datalog);
 
   const loader = useSelector((state: RootType) => state.data.isLoading);
 
   const dispatch = useDispatch();
+  // console.log(datalog);
 
   useEffect(() => {
     dispatch(getData());
