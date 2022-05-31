@@ -1,3 +1,64 @@
+.loader {
+  height: 10vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loader > span {
+  display: inline-block;
+  background-color: rgba(128, 128, 128, 0.53);
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  margin: 0px 3px;
+  -webkit-transform: translate3d(0);
+          transform: translate3d(0);
+  -webkit-animation: bounce 0.6s infinite alternate;
+          animation: bounce 0.6s infinite alternate;
+}
+
+@-webkit-keyframes bounce {
+  to {
+    height: 13px;
+    width: 13px;
+    -webkit-transform: translate3d(0, -16px, 0);
+            transform: translate3d(0, -16px, 0);
+  }
+}
+
+@keyframes bounce {
+  to {
+    height: 13px;
+    width: 13px;
+    -webkit-transform: translate3d(0, -16px, 0);
+            transform: translate3d(0, -16px, 0);
+  }
+}
+
+.loader > span:nth-child(2) {
+  background-color: #1f3a93;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+.loader > span:nth-child(3) {
+  background-color: orangered;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
 .teamsNavbar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -346,65 +407,69 @@
   }
 }
 
-.loader {
-  height: 10vh;
-  width: 100%;
+.searchSection {
+  background-color: rgba(236, 236, 234, 0.695);
+  height: 15rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 8px 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
-.loader > span {
-  display: inline-block;
-  background-color: rgba(128, 128, 128, 0.53);
-  height: 5px;
-  width: 5px;
-  border-radius: 50%;
-  margin: 0px 3px;
-  -webkit-transform: translate3d(0);
-          transform: translate3d(0);
-  -webkit-animation: bounce 0.6s infinite alternate;
-          animation: bounce 0.6s infinite alternate;
+.searchSection .searchTitle {
+  font-size: 22px;
+  font-weight: 400;
 }
 
-@-webkit-keyframes bounce {
-  to {
-    height: 13px;
-    width: 13px;
-    -webkit-transform: translate3d(0, -16px, 0);
-            transform: translate3d(0, -16px, 0);
+.searchSection .searchDescription {
+  font-size: 15px;
+}
+
+.searchSection .globalSearch {
+  margin: 0;
+}
+
+.searchSection .globalSearch .searchLabel {
+  color: #1f3a93;
+  font-size: 15px;
+}
+
+.searchSection .globalSearch .searchInput {
+  margin: 0;
+  border-radius: 27px;
+  padding: 0 8px;
+}
+
+@media (min-width: 720px) {
+  .searchSection {
+    padding: 8px 48px;
   }
 }
 
-@keyframes bounce {
-  to {
-    height: 13px;
-    width: 13px;
-    -webkit-transform: translate3d(0, -16px, 0);
-            transform: translate3d(0, -16px, 0);
+@media (min-width: 900px) {
+  .searchSection {
+    padding: 8px 56px;
   }
-}
-
-.loader > span:nth-child(2) {
-  background-color: #1f3a93;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
-}
-
-.loader > span:nth-child(3) {
-  background-color: orangered;
-  -webkit-animation-delay: 0.4s;
-          animation-delay: 0.4s;
+  .searchSection .searchLabel {
+    font-size: 20px;
+  }
 }
 
 body {

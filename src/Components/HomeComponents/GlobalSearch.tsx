@@ -27,10 +27,16 @@ const GlobalSearch = () => {
           Password
         </InputLabel>
         <OutlinedInput
-          id="outlined-adornment-password"
+          sx={{
+            bgcolor: "background.paper",
+            boxShadow: 1,
+            borderRadius: 2,
+            minWidth: 200,
+          }}
+          color="secondary"
+          id="outlined-adornment-text"
           type="text"
           label="Password"
-          value={""}
           className="searchInput"
           endAdornment={
             <InputAdornment position="end">
