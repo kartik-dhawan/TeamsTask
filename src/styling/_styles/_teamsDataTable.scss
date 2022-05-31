@@ -6,20 +6,35 @@
     .uniData{
         overflow-x: scroll;
         box-sizing: border-box;
-        margin: 20px 10px;
-        max-width: 65rem;
+        max-width: 70rem;
+        margin: $base-padding * 3 $base-padding * 5;
         .uniTable{
+            padding: 20px 10px;
+            box-sizing: border-box;
+            min-width: 60rem;
             .uniTableHead{
                 background-color: map-get($bg-colors, 'primary');
                 .uniTableRowHead{
                     .uniColumn{
                         font-size: 15px;
-                        width: max-content;
-                        padding: 20px 0px;
+                        // width: max-content;
+                        padding: 18px 0px;
                         color: map-get($colors, 'primary');
-                        font-weight: 400;
-                        &:first-child{
-                            padding: 0px 0px;
+                        font-weight: 500;
+                        &:nth-child(1){
+                            width: 7rem;
+                        }
+                        &:nth-child(2){
+                            width: 17rem;
+                        }
+                        &:nth-child(3){
+                            width: 8rem;
+                        }
+                        &:nth-child(4){
+                            width: 10rem;
+                        }
+                        &:nth-child(5){
+                            width: 20rem;
                         }
                     }
                 }
@@ -27,11 +42,90 @@
             .uniTableBody{
                 .uniTableRow{
                     .uniColumn{
-                        width: max-content;
-                        font-size: 14px;
-                        padding: 20px 0px;
-                        &:first-child{
-                            padding: 0px 0px;
+                        // width: max-content;
+                        font-size: 13px;
+                        padding: 18px 0px;
+                        &:nth-child(1){
+                            min-width: 7rem;
+                        }
+                        &:nth-child(2){
+                            min-width: 17rem;
+                        }
+                        &:nth-child(3){
+                            min-width: 8rem;
+                        }
+                    }
+                }
+                .pagination{
+                    padding: 5px 15px;
+                    margin: 0px 10px;
+                }
+            }
+        }
+        @include s {
+            margin: $base-padding * 3 $base-padding * 6;
+            .uniTable{
+                .uniTableHead{
+                    .uniTableRowHead{
+                        .uniColumn{
+                            font-size: 16px;
+                            &:nth-child(2){
+                                width: 18rem;
+                            }
+                            &:nth-child(3){
+                                width: 9rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include m {
+            margin: $base-padding * 3 $base-padding * 7;
+            .uniTable{
+                .uniTableHead{
+                    .uniTableRowHead{
+                        .uniColumn{
+                            font-size: 17px;
+                            &:nth-child(2){
+                                width: 20rem;
+                            }
+                            &:nth-child(3){
+                                width: 10rem;
+                            }
+                        }
+                    }
+                }
+                .uniTableBody{
+                    .uniTableRow{
+                        .uniColumn{
+                            font-size: 14px;
+                            &:nth-child(2){
+                                width: 20rem;
+                            }
+                            &:nth-child(3){
+                                width: 10rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include l {
+            .uniTable{
+                .uniTableHead{
+                    .uniTableRowHead{
+                        .uniColumn{
+                            font-size: 18px;
+                            padding: 20px 0px;
+                        }
+                    }
+                }
+                .uniTableBody{
+                    .uniTableRow{
+                        .uniColumn{
+                            padding: 20px 0px;
+                            font-size: 15px;
                         }
                     }
                 }

@@ -182,7 +182,25 @@
           align-items: center;
 }
 
-.teamsHeader .teamsHeaderContent .teamsHeaderTitle {
+@media (min-width: 720px) {
+  .teamsHeader .teamsHeaderContent .teamsHeaderTitle {
+    font-size: 37px;
+  }
+}
+
+@media (min-width: 900px) {
+  .teamsHeader .teamsHeaderContent .teamsHeaderTitle {
+    font-size: 43px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .teamsHeader .teamsHeaderContent .teamsHeaderTitle {
+    font-size: 47px;
+  }
+}
+
+.teamsHeader .teamsHeaderContent .teamsHeaderText {
   text-align: center;
   font-size: 18px;
   font-weight: 400;
@@ -214,8 +232,15 @@
   overflow-x: scroll;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin: 20px 10px;
-  max-width: 65rem;
+  max-width: 70rem;
+  margin: 24px 40px;
+}
+
+.data-table .uniData .uniTable {
+  padding: 20px 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  min-width: 60rem;
 }
 
 .data-table .uniData .uniTable .uniTableHead {
@@ -224,28 +249,101 @@
 
 .data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn {
   font-size: 15px;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  padding: 20px 0px;
+  padding: 18px 0px;
   color: white;
-  font-weight: 400;
+  font-weight: 500;
 }
 
-.data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn:first-child {
-  padding: 0px 0px;
+.data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn:nth-child(1) {
+  width: 7rem;
+}
+
+.data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn:nth-child(2) {
+  width: 17rem;
+}
+
+.data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn:nth-child(3) {
+  width: 8rem;
+}
+
+.data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn:nth-child(4) {
+  width: 10rem;
+}
+
+.data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn:nth-child(5) {
+  width: 20rem;
 }
 
 .data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  font-size: 14px;
-  padding: 20px 0px;
+  font-size: 13px;
+  padding: 18px 0px;
 }
 
-.data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:first-child {
-  padding: 0px 0px;
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:nth-child(1) {
+  min-width: 7rem;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:nth-child(2) {
+  min-width: 17rem;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:nth-child(3) {
+  min-width: 8rem;
+}
+
+.data-table .uniData .uniTable .uniTableBody .pagination {
+  padding: 5px 15px;
+  margin: 0px 10px;
+}
+
+@media (min-width: 720px) {
+  .data-table .uniData {
+    margin: 24px 48px;
+  }
+  .data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn {
+    font-size: 16px;
+  }
+  .data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn:nth-child(2) {
+    width: 18rem;
+  }
+  .data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn:nth-child(3) {
+    width: 9rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .data-table .uniData {
+    margin: 24px 56px;
+  }
+  .data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn {
+    font-size: 17px;
+  }
+  .data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn:nth-child(2) {
+    width: 20rem;
+  }
+  .data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn:nth-child(3) {
+    width: 10rem;
+  }
+  .data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn {
+    font-size: 14px;
+  }
+  .data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:nth-child(2) {
+    width: 20rem;
+  }
+  .data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:nth-child(3) {
+    width: 10rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn {
+    font-size: 18px;
+    padding: 20px 0px;
+  }
+  .data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn {
+    padding: 20px 0px;
+    font-size: 15px;
+  }
 }
 
 .loader {

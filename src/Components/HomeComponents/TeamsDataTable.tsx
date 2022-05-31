@@ -120,7 +120,7 @@ const TeamsDataTable = () => {
   }, []);
 
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(6);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
@@ -150,19 +150,19 @@ const TeamsDataTable = () => {
         >
           <TableHead className="uniTableHead">
             <TableRow className="uniTableRowHead">
-              <TableCell align="center" className="uniColumn">
+              <TableCell padding="normal" align="center" className="uniColumn">
                 Alpha Code
               </TableCell>
-              <TableCell align="center" className="uniColumn">
+              <TableCell padding="normal" align="center" className="uniColumn">
                 University
               </TableCell>
-              <TableCell align="center" className="uniColumn">
+              <TableCell padding="normal" align="center" className="uniColumn">
                 Domain
               </TableCell>
-              <TableCell align="center" className="uniColumn">
+              <TableCell padding="normal" align="center" className="uniColumn">
                 Country
               </TableCell>
-              <TableCell align="center" className="uniColumn">
+              <TableCell padding="normal" align="center" className="uniColumn">
                 Website
               </TableCell>
             </TableRow>
@@ -178,6 +178,7 @@ const TeamsDataTable = () => {
             ).map((row) => (
               <TableRow key={Math.random()} className="uniTableRow">
                 <TableCell
+                  padding="normal"
                   size="small"
                   component="th"
                   scope="row"
@@ -186,16 +187,32 @@ const TeamsDataTable = () => {
                 >
                   {row.alpha_two_code}
                 </TableCell>
-                <TableCell align="center" className="uniColumn">
+                <TableCell
+                  padding="normal"
+                  align="center"
+                  className="uniColumn"
+                >
                   {row.name}
                 </TableCell>
-                <TableCell align="center" className="uniColumn">
+                <TableCell
+                  padding="normal"
+                  align="center"
+                  className="uniColumn"
+                >
                   {row.domains[0]}
                 </TableCell>
-                <TableCell align="center" className="uniColumn">
+                <TableCell
+                  padding="normal"
+                  align="center"
+                  className="uniColumn"
+                >
                   {row.country}
                 </TableCell>
-                <TableCell align="center" className="uniColumn">
+                <TableCell
+                  padding="normal"
+                  align="center"
+                  className="uniColumn"
+                >
                   <a href={row.web_pages[0]}>{row.web_pages[0]}</a>
                 </TableCell>
               </TableRow>
@@ -205,12 +222,35 @@ const TeamsDataTable = () => {
                 <TableCell colSpan={6} />
               </TableRow>
             )}
+            {loader ? (
+              ""
+            ) : (
+              <TableRow className="uniTableRow">
+                <TablePagination
+                  className="pagination"
+                  rowsPerPageOptions={[5, 10, 20, { label: "All", value: -1 }]}
+                  colSpan={6}
+                  count={datalog.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: {
+                      "aria-label": "rows per page",
+                    },
+                    native: true,
+                  }}
+                  onPageChange={handleChangePage}
+                  onRowsPerPageChange={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            )}
           </TableBody>
-          {loader ? (
+          {/* {loader ? (
             ""
           ) : (
-            <TableFooter>
-              <TableRow>
+            <TableFooter className="uniTableFoot">
+              <TableRow className="pagination">
                 <TablePagination
                   rowsPerPageOptions={[6, 10, 14, { label: "All", value: -1 }]}
                   colSpan={3}
@@ -229,7 +269,7 @@ const TeamsDataTable = () => {
                 />
               </TableRow>
             </TableFooter>
-          )}
+          )} */}
         </Table>
         {loader ? (
           <div className="loader">
