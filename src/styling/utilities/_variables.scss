@@ -1,0 +1,28 @@
+$bg-colors:(
+    'primary': rgb(31, 58, 147),
+    'secondary': rgba(236, 236, 234, 0.695),
+    'third': rgb(255, 69, 0)
+);
+
+$colors:(
+    'primary': rgb(255, 255, 255),
+    'secondary': rgb(28, 37, 48),
+    'third': rgb(255, 69, 0),
+    'navy': rgb(31, 58, 147)
+);
+
+$base-padding: 8px;
+$paddings: (
+    'sm': $base-padding * 1.5,
+    'm': $base-padding * 2,
+    'l': $base-padding * 3,
+);
+
+$base-margin: 8px;
+$margins: (
+    'sm': $base-margin * 1.5,
+    'm': $base-margin * 2,
+    'l': $base-margin * 3,
+);
+
+$base-fontsize: 15px;

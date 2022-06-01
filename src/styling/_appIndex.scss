@@ -1,0 +1,18 @@
+// variables, mixins, functional classes imports
+@import './utilities/variables';
+@import './utilities/mixins';
+@import './utilities/responsive';
+
+
+// responsive style import
+@import './utilities/responsive';
+
+// loader
+@import './utilities/loader';
+
+// component style imports
+@import './_styles/teamsNavbar';
+@import './_styles//teamsHeader';
+@import './_styles/teamsDataTable';
+@import './_styles/globalSearch';
+
