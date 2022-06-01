@@ -212,6 +212,20 @@ const TeamsDataTable = () => {
                   active={sortValue === "uni"}
                   direction={sortValue === "uni" ? order : "asc"}
                   onClick={sortHandler("uni")}
+                  sx={{
+                    "&.MuiTableSortLabel-root": {
+                      color: "white",
+                    },
+                    "&.MuiTableSortLabel-root:hover": {
+                      color: "grey",
+                    },
+                    "&.Mui-active": {
+                      color: "white",
+                    },
+                    "& .MuiTableSortLabel-icon": {
+                      color: "white !important",
+                    },
+                  }}
                 >
                   University
                 </TableSortLabel>
@@ -226,6 +240,20 @@ const TeamsDataTable = () => {
                   active={sortValue === "dom"}
                   direction={sortValue === "dom" ? order : "asc"}
                   onClick={sortHandler("dom")}
+                  sx={{
+                    "&.MuiTableSortLabel-root": {
+                      color: "white",
+                    },
+                    "&.MuiTableSortLabel-root:hover": {
+                      color: "grey",
+                    },
+                    "&.Mui-active": {
+                      color: "white",
+                    },
+                    "& .MuiTableSortLabel-icon": {
+                      color: "white !important",
+                    },
+                  }}
                 >
                   Domain
                 </TableSortLabel>
