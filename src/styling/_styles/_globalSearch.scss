@@ -1,33 +1,36 @@
-.searchSection{
+.midSection{
     background-color: map-get($map: $bg-colors, $key: 'secondary');
-    height: 15rem;
-    box-sizing: border-box;
-    padding: $base-padding $base-padding * 5;
-    @include center-flex(column);
-    justify-content: space-around;
-    align-items: flex-start;
-    .searchTitle{
-        font-size: 22px;
-        font-weight: 400;
-    }
-    .searchDescription{
-        font-size: $base-fontsize;
-    }
-    .globalSearch{
-        margin: 0;
-        .searchInput{
-            margin: 0;
-            border-radius: 27px;
-            padding: 0 $base-padding;
+    @include center-flex(row);
+    .searchSection{
+        height: 15rem;
+        box-sizing: border-box;
+        padding: $base-padding $base-padding * 5;
+        @include center-flex(column);
+        justify-content: space-around;
+        align-items: flex-start;
+        .searchTitle{
+            font-size: 22px;
+            font-weight: 400;
         }
-    }
-    @include s{
-        padding: $base-padding $base-padding * 6;
-    }
-    @include m{
-        padding: $base-padding $base-padding * 7;
-        .searchLabel{
-            font-size: 20px;
+        .searchDescription{
+            font-size: $base-fontsize;
+        }
+        .globalSearch{
+            margin: 0;
+            .searchInput{
+                margin: 0;
+                border-radius: 27px;
+                padding: 0 $base-padding;
+            }
+        }
+        @include m{
+            .searchLabel{
+                font-size: 20px;
+            }
+        }
+        @include l{
+            padding: $base-padding $base-padding * 2;
+            width: 70rem;
         }
     }
 }

@@ -40,46 +40,50 @@ const GlobalSearch = () => {
   }
 
   return (
-    <div className="searchSection">
-      <div className="searchTitle">Team Black Panther</div>
-      <div className="searchDescription">
-        Manage your Teams account, invite Team Members to join your Team and set
-        their permissions to edit listings and view production reports.
-      </div>
+    <div className="midSection">
+      <div className="searchSection">
+        <div className="searchTitle">Team Black Panther</div>
+        <div className="searchDescription">
+          Manage your Teams account, invite Team Members to join your Team and
+          set their permissions to edit listings and view production reports.
+          Manage your Teams account, invite Team Members to join your Team and
+          set their permissions to edit listings and view production reports.
+        </div>
 
-      <FormControl
-        sx={{ m: 1, width: "25ch" }}
-        variant="outlined"
-        className="globalSearch"
-      >
-        <InputLabel htmlFor="outlined-adornment-text" className="searchLabel">
-          Search
-        </InputLabel>
-        <OutlinedInput
-          sx={{
-            bgcolor: "background.paper",
-            boxShadow: 1,
-            borderRadius: 2,
-            minWidth: 200,
-          }}
-          color="secondary"
-          id="outlined-adornment-text"
-          name="outlined-adornment-text"
-          type="text"
-          label="Password"
-          className="searchInput"
-          value={search}
-          onChange={(e) => {
-            setSearch(e.target.value);
-            dispatch(updateData(updatedData));
-          }}
-          endAdornment={
-            <InputAdornment position="end">
-              <ArrowDropDownIcon />
-            </InputAdornment>
-          }
-        />
-      </FormControl>
+        <FormControl
+          sx={{ m: 1, width: "25ch" }}
+          variant="outlined"
+          className="globalSearch"
+        >
+          <InputLabel htmlFor="outlined-adornment-text" className="searchLabel">
+            Search
+          </InputLabel>
+          <OutlinedInput
+            sx={{
+              bgcolor: "background.paper",
+              boxShadow: 1,
+              borderRadius: 2,
+              minWidth: 200,
+            }}
+            color="secondary"
+            id="outlined-adornment-text"
+            name="outlined-adornment-text"
+            type="text"
+            label="Password"
+            className="searchInput"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              dispatch(updateData(updatedData));
+            }}
+            endAdornment={
+              <InputAdornment position="end">
+                <ArrowDropDownIcon />
+              </InputAdornment>
+            }
+          />
+        </FormControl>
+      </div>
     </div>
   );
 };
