@@ -10,20 +10,40 @@
 }
 
 .uniDesc{
-    background-color: map-get($map: $bg-colors, $key: 'secondary');
-    height: 8rem;
+    background-color: darken(map-get($map: $bg-colors, $key: 'secondary'), 10%);
+    height: 11rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     padding: $base-padding * 2 $base-padding * 4;
     .uniDescTitle{
-        font-size: 20px;
+        font-size: 23px;
         font-weight: 500;
     }
     .uniDescBody{
         font-size: 15px;
         text-align: justify;
         margin-bottom: $base-margin;
+    }
+    @include s{
+        height: 8rem;
+        padding: $base-padding * 2 $base-padding * 9;
+        .uniDescTitle{
+            font-size: 25px;
+        }
+    }
+    @include m{
+        padding: $base-padding * 2 $base-padding * 8;
+        .uniDescTitle{
+            font-size: 29px;
+        }
+    }
+    @include l{
+        padding: $base-padding * 2 $base-padding * 10;
+        .uniDescTitle{
+            font-size: 32px;
+        }
     }
 }
 
