@@ -524,11 +524,15 @@
   padding: 5px 8px;
 }
 
-.teamsHeaderText .uniLink {
+.teamsHeaderContent .teamsHeaderTitle {
+  text-align: center;
+}
+
+.teamsHeaderContent .teamsHeaderText .uniLink {
   margin: 4px 10px;
 }
 
-.teamsHeaderText .uniCountry {
+.teamsHeaderContent .teamsHeaderText .uniCountry {
   margin: 4px 10px;
 }
 

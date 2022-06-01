@@ -1,13 +1,18 @@
 @import './cards';
-
-.teamsHeaderText{
-    .uniLink{
-        margin: 4px 10px;
+.teamsHeaderContent{
+    .teamsHeaderTitle{
+        text-align: center;
     }
-    .uniCountry{
-        margin: 4px 10px;
+    .teamsHeaderText{
+        .uniLink{
+            margin: 4px 10px;
+        }
+        .uniCountry{
+            margin: 4px 10px;
+        }
     }
 }
+
 
 .uniDesc{
     background-color: darken(map-get($map: $bg-colors, $key: 'secondary'), 10%);
