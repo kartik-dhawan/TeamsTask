@@ -1,0 +1,30 @@
+.uniCard{
+    .cardBody{
+        @include center-flex(column);
+        align-items: flex-start;
+    }
+}
+
+
+@mixin activity-badge{
+    color: map-get($map: $colors, $key: 'primary');
+    font-weight: 400;
+    font-size: 12px;
+    padding: 5px 8px;
+}
+
+.statusActiveColor{
+    margin: 20px;
+    & > span{
+        background-color: map-get($map: $bg-colors, $key: 'success');
+        @include activity-badge;
+    }
+}
+
+.statusInactiveColor{
+    margin: 20px;
+    & > span{
+        background-color: map-get($map: $bg-colors, $key: 'error');
+        @include activity-badge;
+    }
+}
