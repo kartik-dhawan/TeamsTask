@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   IconButton,
@@ -10,6 +10,7 @@ import {
   TableHead,
   TablePagination,
   TableRow,
+  TableSortLabel,
   useTheme,
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
@@ -104,17 +105,24 @@ function TablePaginationActions(props: TablePaginationActionsProps) {
 
 const TeamsDataTable = () => {
   const theme = useTheme();
-
-  const datalog = useSelector((state: RootType) => state.search.updatedData);
-
-  const loader = useSelector((state: RootType) => state.data.isLoading);
-
   const dispatch = useDispatch();
-  // console.log(datalog);
 
   useEffect(() => {
     dispatch(getData());
   }, [dispatch]);
+  interface data {
+    alpha_two_code: string;
+    country: string;
+    domains: any[];
+    name: string;
+    web_pages: any[];
+  }
+
+  const datalog: any[] = useSelector(
+    (state: RootType) => state.search.updatedData
+  ).slice(0, 50);
+
+  const loader = useSelector((state: RootType) => state.data.isLoading);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -137,6 +145,50 @@ const TeamsDataTable = () => {
     setPage(0);
   };
 
+  // sortable header
+  const [sortValue, setSortValue] = useState("uni");
+  const [order, setOrder] = useState<"asc" | "desc">("asc");
+
+  function compareByName(a: data, b: data) {
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a.name > b.name) {
+      return 1;
+    }
+    return 0;
+  }
+
+  function compareByDomain(a: data, b: data) {
+    if (a.domains[0] < b.domains[0]) {
+      return -1;
+    }
+    if (a.domains[0] > b.domains[0]) {
+      return 1;
+    }
+    return 0;
+  }
+
+  if (order === "asc" && sortValue === "uni") {
+    datalog.sort(compareByName);
+  } else if (order === "desc" && sortValue === "uni") {
+    datalog.sort(compareByName).reverse();
+  } else if (order === "asc" && sortValue === "dom") {
+    datalog.sort(compareByDomain);
+  } else if (order === "desc" && sortValue === "dom") {
+    datalog.sort(compareByDomain).reverse();
+  }
+
+  const handleRequestSort = (event: any, property: any) => {
+    const isAscending = sortValue === property && order === "asc";
+    setSortValue(property);
+    setOrder(isAscending ? "desc" : "asc");
+  };
+
+  const sortHandler = (property: any) => (event: any) => {
+    handleRequestSort(event, property);
+  };
+
   return (
     <div className="data-table">
       <TableContainer component={Paper} className="uniData">
@@ -150,11 +202,61 @@ const TeamsDataTable = () => {
               <TableCell padding="normal" align="center" className="uniColumn">
                 Alpha Code
               </TableCell>
-              <TableCell padding="normal" align="center" className="uniColumn">
-                University
+              <TableCell
+                key="uni"
+                padding="normal"
+                align="center"
+                className="uniColumn"
+              >
+                <TableSortLabel
+                  active={sortValue === "uni"}
+                  direction={sortValue === "uni" ? order : "asc"}
+                  onClick={sortHandler("uni")}
+                  sx={{
+                    "&.MuiTableSortLabel-root": {
+                      color: "white",
+                    },
+                    "&.MuiTableSortLabel-root:hover": {
+                      color: "grey",
+                    },
+                    "&.Mui-active": {
+                      color: "white",
+                    },
+                    "& .MuiTableSortLabel-icon": {
+                      color: "white !important",
+                    },
+                  }}
+                >
+                  University
+                </TableSortLabel>
               </TableCell>
-              <TableCell padding="normal" align="center" className="uniColumn">
-                Domain
+              <TableCell
+                key="dom"
+                padding="normal"
+                align="center"
+                className="uniColumn"
+              >
+                <TableSortLabel
+                  active={sortValue === "dom"}
+                  direction={sortValue === "dom" ? order : "asc"}
+                  onClick={sortHandler("dom")}
+                  sx={{
+                    "&.MuiTableSortLabel-root": {
+                      color: "white",
+                    },
+                    "&.MuiTableSortLabel-root:hover": {
+                      color: "grey",
+                    },
+                    "&.Mui-active": {
+                      color: "white",
+                    },
+                    "& .MuiTableSortLabel-icon": {
+                      color: "white !important",
+                    },
+                  }}
+                >
+                  Domain
+                </TableSortLabel>
               </TableCell>
               <TableCell padding="normal" align="center" className="uniColumn">
                 Country
