@@ -31,6 +31,16 @@ const DetailsPage = () => {
           </Typography>
         </div>
       </div>
+      <section className="uniDesc">
+        <div className="uniDescTitle">
+          Welcome to the alumni page of {uni.name}
+        </div>
+        <div className="uniDescBody">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
+          inventore, iure nesciunt dolorum mollitia maiores itaque architecto,
+          reprehenderit vero non saepe cumque deleniti maxime ullam at! Enim.
+        </div>
+      </section>
       <div className="cardsContainer">
         {details.map((record) => {
           return (

@@ -532,6 +532,32 @@
   margin: 4px 10px;
 }
 
+.uniDesc {
+  background-color: rgba(236, 236, 234, 0.695);
+  height: 8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 16px 32px;
+}
+
+.uniDesc .uniDescTitle {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.uniDesc .uniDescBody {
+  font-size: 15px;
+  text-align: justify;
+  margin-bottom: 8px;
+}
+
 .cardsContainer {
   display: -ms-grid;
   display: grid;
@@ -543,7 +569,8 @@
           align-items: center;
   -ms-grid-columns: (300px)[auto-fill];
       grid-template-columns: repeat(auto-fill, 300px);
-  margin: 16px 8px;
+  padding: 16px 8px;
+  background-color: rgba(236, 236, 234, 0.695);
 }
 
 .cardsContainer .uniCard {
