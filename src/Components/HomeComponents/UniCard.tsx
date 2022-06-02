@@ -25,7 +25,7 @@ const UniCard = (props: PropsType) => {
   const random = Math.floor(Math.random() * colorArr.length);
 
   return (
-    <Card sx={{ maxWidth: 450, minHeight: 210 }} className="uniCard">
+    <Card sx={{ maxWidth: 450, minHeight: 240 }} className="uniCard">
       <CardHeader
         className="cardHeader"
         avatar={
@@ -38,7 +38,19 @@ const UniCard = (props: PropsType) => {
           </Avatar>
         }
         title={props.name}
-        subheader={props.gender === "female" ? <FemaleIcon /> : <MaleIcon />}
+        subheader={
+          props.gender === "female" ? (
+            <div className="cardGender">
+              <FemaleIcon />
+              <span id="genderText">Female</span>
+            </div>
+          ) : (
+            <div className="cardGender">
+              <MaleIcon />
+              <span id="genderText">Male</span>
+            </div>
+          )
+        }
       />
       <CardContent className="cardBody">
         <Typography
@@ -49,14 +61,15 @@ const UniCard = (props: PropsType) => {
           <EmailIcon style={{ margin: "2px 5px" }} />
           {props.email}
         </Typography>
-        <Badge
-          badgeContent={props.status}
+        <div
           className={
             props.status === "active"
               ? "statusActiveColor"
               : "statusInactiveColor"
           }
-        ></Badge>
+        >
+          {props.status}
+        </div>
       </CardContent>
     </Card>
   );

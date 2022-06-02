@@ -9,27 +9,24 @@
 @mixin activity-badge{
     color: map-get($map: $colors, $key: 'primary');
     font-weight: 400;
-    font-size: 15px;
-    padding: 5px 8px;
+    font-size: 18px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    padding: 4px 10px;
+    margin: 13px 0px;
+    border-radius: 14px;
+    text-align: center;
 }
 
 .statusActiveColor{
-    margin: 20px 30px;
-    font-size: 16px;
-    & > span{
         background-color: map-get($map: $bg-colors, $key: 'success');
         @include activity-badge;
-    }
+
 }
 
 .statusInactiveColor{
-    font-size: 16px;
-    margin: 20px 30px;
-    & > span{
         background-color: map-get($map: $bg-colors, $key: 'error');
         @include activity-badge;
-    }
+
 }
