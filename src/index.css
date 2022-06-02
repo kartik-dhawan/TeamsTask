@@ -76,7 +76,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: 7vh;
+  height: 4rem;
   background-color: rgba(236, 236, 234, 0.695);
 }
 
@@ -479,6 +479,216 @@
     padding: 8px 16px;
     width: 70rem;
   }
+}
+
+.uniCard .cardBody {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.statusActiveColor {
+  margin: 20px 30px;
+  font-size: 16px;
+}
+
+.statusActiveColor > span {
+  background-color: #179117;
+  color: white;
+  font-weight: 400;
+  font-size: 15px;
+  padding: 5px 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.statusInactiveColor {
+  font-size: 16px;
+  margin: 20px 30px;
+}
+
+.statusInactiveColor > span {
+  background-color: rgba(219, 37, 37, 0.841);
+  color: white;
+  font-weight: 400;
+  font-size: 15px;
+  padding: 5px 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.teamsHeaderContent .teamsHeaderTitle {
+  text-align: center;
+}
+
+.teamsHeaderContent .teamsHeaderText {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: "row";
+          flex-direction: "row";
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.teamsHeaderContent .teamsHeaderText .uniLink {
+  margin: 4px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.uniDesc {
+  background-color: rgba(212, 212, 207, 0.695);
+  height: 11rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 16px 32px;
+}
+
+.uniDesc .uniDescTitle {
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.uniDesc .uniDescBody {
+  font-size: 15px;
+  text-align: justify;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 720px) {
+  .uniDesc {
+    height: 8rem;
+    padding: 16px 72px;
+  }
+  .uniDesc .uniDescTitle {
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 900px) {
+  .uniDesc {
+    padding: 16px 64px;
+  }
+  .uniDesc .uniDescTitle {
+    font-size: 29px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .uniDesc {
+    padding: 16px 80px;
+  }
+  .uniDesc .uniDescTitle {
+    font-size: 32px;
+  }
+}
+
+.cardsContainer {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: (400px)[auto-fill];
+      grid-template-columns: repeat(auto-fill, 400px);
+  padding: 16px 8px;
+  background-color: rgba(236, 236, 234, 0.695);
+}
+
+.cardsContainer .uniCard {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 8px;
+  padding: 16px 8px;
+  width: 375px;
+}
+
+.cardsContainer .uniCard .cardHeader {
+  padding: 16px;
+}
+
+.cardsContainer .uniCard .cardHeader > div:nth-child(1) > div {
+  font-size: 22px;
+  height: 50px;
+  width: 50px;
+}
+
+.cardsContainer .uniCard .cardHeader > div:nth-child(2) > span:nth-child(1) {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.cardsContainer .uniCard .cardBody {
+  padding: 16px;
+}
+
+.cardsContainer .uniCard .cardBody .cardEmail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: "column";
+          flex-direction: "column";
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 body {

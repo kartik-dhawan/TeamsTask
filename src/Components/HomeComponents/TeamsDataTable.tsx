@@ -14,7 +14,9 @@ import {
   useTheme,
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getData } from "../../redux/reducers/apiSlice";
+import { getUniData } from "../../redux/reducers/uniSlice";
 import { RootType } from "../../redux/store/store";
 import { KeyboardArrowRight, KeyboardArrowLeft } from "@mui/icons-material";
 import FirstPageIcon from "@mui/icons-material/FirstPage";
@@ -106,6 +108,7 @@ function TablePaginationActions(props: TablePaginationActionsProps) {
 const TeamsDataTable = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getData());
@@ -266,7 +269,6 @@ const TeamsDataTable = () => {
               </TableCell>
             </TableRow>
           </TableHead>
-
           <TableBody className="uniTableBody">
             {(rowsPerPage > 0
               ? datalog.slice(
@@ -290,8 +292,14 @@ const TeamsDataTable = () => {
                   padding="normal"
                   align="center"
                   className="uniColumn"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    dispatch(getUniData(row));
+                    console.log("hello");
+                    navigate("/home/details");
+                  }}
                 >
-                  {row.name}
+                  <a href="#">{row.name}</a>
                 </TableCell>
                 <TableCell
                   padding="normal"

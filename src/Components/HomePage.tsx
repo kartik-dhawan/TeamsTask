@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import React from "react";
 import TeamsHeader from "./HomeComponents/TeamsHeader";
 import TeamsDataTable from "./HomeComponents/TeamsDataTable";
 import GlobalSearch from "./HomeComponents/GlobalSearch";
@@ -10,7 +9,6 @@ const HomePage = () => {
       <TeamsHeader />
       <GlobalSearch />
       <TeamsDataTable />
-      <Outlet />
     </>
   );
 };
