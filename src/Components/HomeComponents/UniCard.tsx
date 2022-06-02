@@ -7,6 +7,9 @@ import {
   Badge,
 } from "@mui/material";
 import React from "react";
+import MaleIcon from "@mui/icons-material/Male";
+import FemaleIcon from "@mui/icons-material/Female";
+import EmailIcon from "@mui/icons-material/Email";
 
 interface PropsType {
   name: string;
@@ -22,7 +25,7 @@ const UniCard = (props: PropsType) => {
   const random = Math.floor(Math.random() * colorArr.length);
 
   return (
-    <Card sx={{ maxWidth: 345, minHeight: 170 }} className="uniCard">
+    <Card sx={{ maxWidth: 450, minHeight: 210 }} className="uniCard">
       <CardHeader
         className="cardHeader"
         avatar={
@@ -35,15 +38,16 @@ const UniCard = (props: PropsType) => {
           </Avatar>
         }
         title={props.name}
-        subheader={props.gender}
+        subheader={props.gender === "female" ? <FemaleIcon /> : <MaleIcon />}
       />
       <CardContent className="cardBody">
         <Typography
-          variant="body2"
+          variant="body1"
           color="text.secondary"
           className="cardEmail"
         >
-          <b>Email:</b> {props.email}
+          <EmailIcon style={{ margin: "2px 5px" }} />
+          {props.email}
         </Typography>
         <Badge
           badgeContent={props.status}

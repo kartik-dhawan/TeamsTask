@@ -4,11 +4,11 @@
         text-align: center;
     }
     .teamsHeaderText{
+        @include center-flex('row');
         .uniLink{
             margin: 4px 10px;
-        }
-        .uniCountry{
-            margin: 4px 10px;
+            display: flex;
+            align-items: center;
         }
     }
 }
@@ -54,11 +54,35 @@
 
 .cardsContainer{
     @include center-grid;
-    grid-template-columns: repeat(auto-fill, 300px);
+    grid-template-columns: repeat(auto-fill, 400px);
     padding: $base-padding * 2 $base-padding;
     background-color: map-get($map: $bg-colors, $key: 'secondary');
     .uniCard{
         box-sizing: border-box;
         margin: $base-margin;
+        padding: $base-padding * 2 $base-padding;
+        width: 375px;
+        .cardHeader{
+            padding: $base-padding * 2;
+            & > div:nth-child(1){
+                & > div{
+                    font-size: 22px;
+                    height: 50px;
+                    width: 50px;
+                }
+            }
+            & > div:nth-child(2){
+                & > span:nth-child(1){
+                    font-size: 17px;
+                    font-weight: 400;
+                }
+            }
+        }
+        .cardBody{
+            padding: $base-padding * 2;
+            .cardEmail{
+                @include center-flex('column');
+            }
+        }
     }
 }

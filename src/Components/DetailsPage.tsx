@@ -4,6 +4,7 @@ import { RootType } from "../redux/store/store";
 import { getDetails } from "../redux/reducers/detailsApiSlice";
 import { Typography } from "@mui/material";
 import UniCard from "./HomeComponents/UniCard";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 const DetailsPage = () => {
   const details = useSelector((state: RootType) => state.details.data);
@@ -12,7 +13,7 @@ const DetailsPage = () => {
 
   useEffect(() => {
     dispatch(getDetails());
-  }, [dispatch]);
+  }, []);
 
   console.log(details);
 
@@ -24,10 +25,16 @@ const DetailsPage = () => {
             {uni.name}
           </Typography>
           <Typography variant="body1" className="teamsHeaderText">
-            <a href="" className="uniLink" style={{ color: "white" }}>
-              {uni.web_pages[0]}
+            <span>{uni.domains[0]}</span>
+            <a
+              href={uni.web_pages[0]}
+              className="uniLink"
+              style={{ color: "white" }}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <OpenInNewIcon />
             </a>
-            -<span className="uniCountry">{uni.country}</span>
           </Typography>
         </div>
       </div>
