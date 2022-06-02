@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootType } from "../redux/store/store";
 import { getDetails } from "../redux/reducers/detailsApiSlice";
 import { Typography } from "@mui/material";
-import UniCard from "./HomeComponents/UniCard";
+import UniCard from "./Details/UniCard";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 const DetailsPage = () => {
