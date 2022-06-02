@@ -501,16 +501,10 @@
 }
 
 .statusActiveColor {
-  margin: 20px 30px;
-  font-size: 16px;
-}
-
-.statusActiveColor > span {
   background-color: #179117;
   color: white;
   font-weight: 400;
-  font-size: 15px;
-  padding: 5px 8px;
+  font-size: 18px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -521,19 +515,17 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  padding: 4px 10px;
+  margin: 13px 0px;
+  border-radius: 14px;
+  text-align: center;
 }
 
 .statusInactiveColor {
-  font-size: 16px;
-  margin: 20px 30px;
-}
-
-.statusInactiveColor > span {
   background-color: rgba(219, 37, 37, 0.841);
   color: white;
   font-weight: 400;
-  font-size: 15px;
-  padding: 5px 8px;
+  font-size: 18px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -544,6 +536,10 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  padding: 4px 10px;
+  margin: 13px 0px;
+  border-radius: 14px;
+  text-align: center;
 }
 
 .teamsHeaderContent .teamsHeaderTitle {
@@ -644,7 +640,7 @@
           align-items: center;
   -ms-grid-columns: (400px)[auto-fill];
       grid-template-columns: repeat(auto-fill, 400px);
-  padding: 16px 8px;
+  padding: 48px 8px;
   background-color: rgba(236, 236, 234, 0.695);
 }
 
@@ -654,16 +650,49 @@
   margin: 8px;
   padding: 16px 8px;
   width: 375px;
+  -webkit-transition: 400ms all ease;
+  transition: 400ms all ease;
+}
+
+.cardsContainer .uniCard:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .cardsContainer .uniCard .cardHeader {
   padding: 16px;
 }
 
+.cardsContainer .uniCard .cardHeader .cardGender {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 0px;
+}
+
+.cardsContainer .uniCard .cardHeader .cardGender > svg:nth-child(1) {
+  font-size: 25px;
+}
+
+.cardsContainer .uniCard .cardHeader .cardGender #genderText {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 500;
+  font-size: 15px;
+}
+
 .cardsContainer .uniCard .cardHeader > div:nth-child(1) > div {
   font-size: 22px;
-  height: 50px;
-  width: 50px;
+  height: 55px;
+  width: 55px;
 }
 
 .cardsContainer .uniCard .cardHeader > div:nth-child(2) > span:nth-child(1) {

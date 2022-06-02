@@ -9,13 +9,15 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 const DetailsPage = () => {
   const details = useSelector((state: RootType) => state.details.data);
   const uni = useSelector((state: RootType) => state.uni.uniData);
+  const loader = useSelector((state: RootType) => state.uni.isLoading);
+
+  console.log(loader);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDetails());
   }, []);
-
-  console.log(details);
 
   return (
     <>
@@ -48,18 +50,36 @@ const DetailsPage = () => {
           reprehenderit vero non saepe cumque deleniti maxime ullam at! Enim.
         </div>
       </section>
+
       <div className="cardsContainer">
-        {details.map((record) => {
-          return (
-            <UniCard
-              name={record.name}
-              gender={record.gender}
-              id={record.id}
-              email={record.email}
-              status={record.status}
-            />
-          );
-        })}
+        {loader ? (
+          <div
+            className="loader"
+            style={{
+              width: "90vw",
+              marginLeft: 0,
+              marginRight: 0,
+              paddingLeft: 0,
+              paddingRight: 0,
+            }}
+          >
+            <span className="circle"></span>
+            <span className="circle"></span>
+            <span className="circle"></span>
+          </div>
+        ) : (
+          details.map((record) => {
+            return (
+              <UniCard
+                name={record.name}
+                gender={record.gender}
+                id={record.id}
+                email={record.email}
+                status={record.status}
+              />
+            );
+          })
+        )}
       </div>
     </>
   );
