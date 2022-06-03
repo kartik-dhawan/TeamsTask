@@ -270,60 +270,68 @@ const TeamsDataTable = () => {
             </TableRow>
           </TableHead>
           <TableBody className="uniTableBody">
-            {(rowsPerPage > 0
-              ? datalog.slice(
-                  page * rowsPerPage,
-                  page * rowsPerPage + rowsPerPage
-                )
-              : datalog
-            ).map((row) => (
-              <TableRow key={Math.random()} className="uniTableRow">
-                <TableCell
-                  padding="normal"
-                  size="small"
-                  component="th"
-                  scope="row"
-                  className="uniColumn"
-                  align="center"
-                >
-                  {row.alpha_two_code}
-                </TableCell>
-                <TableCell
-                  padding="normal"
-                  align="center"
-                  className="uniColumn"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    dispatch(getUniData(row));
-                    console.log("hello");
-                    navigate("/home/details");
-                  }}
-                >
-                  <a href="#">{row.name}</a>
-                </TableCell>
-                <TableCell
-                  padding="normal"
-                  align="center"
-                  className="uniColumn"
-                >
-                  {row.domains[0]}
-                </TableCell>
-                <TableCell
-                  padding="normal"
-                  align="center"
-                  className="uniColumn"
-                >
-                  {row.country}
-                </TableCell>
-                <TableCell
-                  padding="normal"
-                  align="center"
-                  className="uniColumn"
-                >
-                  <a href={row.web_pages[0]}>{row.web_pages[0]}</a>
-                </TableCell>
-              </TableRow>
-            ))}
+            {datalog.length > 0 && (
+              <>
+                {(rowsPerPage > 0
+                  ? datalog.slice(
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
+                  : datalog
+                ).map((row) => (
+                  <TableRow key={Math.random()} className="uniTableRow">
+                    <TableCell
+                      padding="normal"
+                      size="small"
+                      component="th"
+                      scope="row"
+                      className="uniColumn"
+                      align="center"
+                    >
+                      {row.alpha_two_code}
+                    </TableCell>
+                    <TableCell
+                      padding="normal"
+                      align="center"
+                      className="uniColumn"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        dispatch(getUniData(row));
+                        console.log("hello");
+                        navigate("/home/details");
+                      }}
+                    >
+                      <a href="#">{row.name}</a>
+                    </TableCell>
+                    <TableCell
+                      padding="normal"
+                      align="center"
+                      className="uniColumn"
+                    >
+                      {row.domains ? row.domains[0] : ""}
+                    </TableCell>
+                    <TableCell
+                      padding="normal"
+                      align="center"
+                      className="uniColumn"
+                    >
+                      {row.country}
+                    </TableCell>
+                    <TableCell
+                      padding="normal"
+                      align="center"
+                      className="uniColumn"
+                    >
+                      {row.web_pages ? (
+                        <a href={row.web_pages[0]}>{row.web_pages[0]}</a>
+                      ) : (
+                        ""
+                      )}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </>
+            )}
             {emptyRows > 0 && (
               <TableRow style={{ height: 53 * emptyRows }}>
                 <TableCell colSpan={6} />

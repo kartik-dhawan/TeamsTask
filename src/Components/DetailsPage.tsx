@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootType } from "../redux/store/store";
 import { getDetails } from "../redux/reducers/detailsApiSlice";
 import { Typography } from "@mui/material";
-import UniCard from "./HomeComponents/UniCard";
+import UniCard from "./Details/UniCard";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 const DetailsPage = () => {
@@ -50,37 +50,40 @@ const DetailsPage = () => {
           reprehenderit vero non saepe cumque deleniti maxime ullam at! Enim.
         </div>
       </section>
-
-      <div className="cardsContainer">
-        {loader ? (
-          <div
-            className="loader"
-            style={{
-              width: "90vw",
-              marginLeft: 0,
-              marginRight: 0,
-              paddingLeft: 0,
-              paddingRight: 0,
-            }}
-          >
-            <span className="circle"></span>
-            <span className="circle"></span>
-            <span className="circle"></span>
-          </div>
-        ) : (
-          details.map((record) => {
-            return (
-              <UniCard
-                name={record.name}
-                gender={record.gender}
-                id={record.id}
-                email={record.email}
-                status={record.status}
-              />
-            );
-          })
-        )}
-      </div>
+      {console.log(loader)}
+      {
+        <div className="cardsContainer">
+          {loader ? (
+            <div
+              className="loader"
+              style={{
+                width: "90vw",
+                marginLeft: 0,
+                marginRight: 0,
+                paddingLeft: 0,
+                paddingRight: 0,
+              }}
+            >
+              <span className="circle"></span>
+              <span className="circle"></span>
+              <span className="circle"></span>
+            </div>
+          ) : (
+            details.map((record, index) => {
+              return (
+                <UniCard
+                  name={record.name}
+                  gender={record.gender}
+                  id={record.id}
+                  email={record.email}
+                  status={record.status}
+                  key={index}
+                />
+              );
+            })
+          )}
+        </div>
+      }
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
-import TeamsHeader from "./HomeComponents/TeamsHeader";
-import TeamsDataTable from "./HomeComponents/TeamsDataTable";
-import GlobalSearch from "./HomeComponents/GlobalSearch";
+import TeamsHeader from "./Home/TeamsHeader";
+import TeamsDataTable from "./Home/TeamsDataTable";
+import GlobalSearch from "./Home/GlobalSearch";
 
 const HomePage = () => {
   return (
