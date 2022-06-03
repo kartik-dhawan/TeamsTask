@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {
   Box,
+  Button,
+  Drawer,
   IconButton,
   Paper,
   Table,
@@ -19,9 +21,12 @@ import { getData } from "../../redux/reducers/apiSlice";
 import { getUniData } from "../../redux/reducers/uniSlice";
 import { RootType } from "../../redux/store/store";
 import { KeyboardArrowRight, KeyboardArrowLeft } from "@mui/icons-material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import FirstPageIcon from "@mui/icons-material/FirstPage";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import { updateData } from "../../redux/reducers/searchSlice";
+import { getUniUpdatedData } from "../../redux/reducers/updateUniSlice";
 
 // pagination
 interface TablePaginationActionsProps {
@@ -195,13 +200,36 @@ const TeamsDataTable = () => {
 
   // deleting a record
 
-  const rowrecord: any = useSelector((state: RootType) => state.uni.uniData);
+  const rowToDelete: any = useSelector((state: RootType) => state.uni.uniData);
+  const rowToUpdate: any = useSelector(
+    (state: RootType) => state.updateUni.uniData
+  );
+
   datalog = datalog.filter((row) => {
-    return row.name != rowrecord.name;
+    return row.name != rowToDelete.name;
   });
+
+  // updating a record
+  const [updateRowToggle, setUpdateRowToggle] = useState(false);
+  type Anchor = "top" | "left" | "bottom" | "right";
+
+  const toggleDrawer =
+    (anchor: Anchor, open: boolean) =>
+    (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
+      ) {
+        return;
+      }
+      setUpdateRowToggle(!updateRowToggle);
+    };
 
   return (
     <div className="data-table">
+      {/* data table */}
+
       <TableContainer component={Paper} className="uniData">
         <Table
           sx={{ minWidth: 650 }}
@@ -322,7 +350,6 @@ const TeamsDataTable = () => {
                       padding="normal"
                       align="center"
                       className="uniColumn"
-                      onClick={() => console.log("deleted")}
                     >
                       {row.domains ? row.domains[0] : ""}
                     </TableCell>
@@ -348,13 +375,30 @@ const TeamsDataTable = () => {
                       padding="normal"
                       align="center"
                       className="uniColumn deleteContainer"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        dispatch(getUniData(row));
-                        dispatch(updateData(datalog));
-                      }}
                     >
-                      <div className="deleteButton">Delete</div>
+                      <Button
+                        className="deleteButton"
+                        onClick={() => {
+                          dispatch(getUniData(row));
+                          dispatch(updateData(datalog));
+                        }}
+                      >
+                        <DeleteIcon />
+                      </Button>
+                      <div
+                        onClick={() => {
+                          dispatch(getUniUpdatedData(row));
+                          console.log(rowToUpdate.name);
+                        }}
+                      >
+                        <Button
+                          key="right"
+                          className="deleteButton"
+                          onClick={toggleDrawer("right", true)}
+                        >
+                          <ModeEditOutlineOutlinedIcon />
+                        </Button>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -400,6 +444,16 @@ const TeamsDataTable = () => {
           ""
         )}
       </TableContainer>
+
+      {/* Update record drawer */}
+
+      <Drawer
+        anchor={"right"}
+        open={updateRowToggle}
+        onClose={toggleDrawer("right", false)}
+      >
+        {rowToUpdate.name}
+      </Drawer>
     </div>
   );
 };

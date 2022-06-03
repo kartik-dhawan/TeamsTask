@@ -335,6 +335,10 @@
   width: 20rem;
 }
 
+.data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn:nth-child(6) {
+  width: 10rem;
+}
+
 .data-table .uniData .uniTable .uniTableBody .uniTableRow .deleteContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -353,12 +357,12 @@
 
 .data-table .uniData .uniTable .uniTableBody .uniTableRow .deleteContainer .deleteButton {
   cursor: pointer;
-  padding: 4px 10px;
-  width: 50%;
+  padding: 0px;
+  margin: 0px 4px;
+  min-width: 40px;
+  min-height: 40px;
   background-color: orangered;
   color: white;
-  font-weight: 500;
-  letter-spacing: 0.5px;
   border-radius: 20px;
   border: 1.5px solid orangered;
   -webkit-transition: 200ms all ease;
@@ -369,6 +373,11 @@
   background-color: white;
   color: orangered;
   border: 1.5px solid orangered;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .deleteContainer .deleteButton .MuiSvgIcon-root {
+  font-size: 22px;
+  padding: 0px;
 }
 
 .data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn {
@@ -386,6 +395,18 @@
 
 .data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:nth-child(3) {
   min-width: 8rem;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:nth-child(4) {
+  width: 10rem;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:nth-child(5) {
+  width: 20rem;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:nth-child(6) {
+  min-width: 10rem;
 }
 
 .data-table .uniData .uniTable .uniTableBody .pagination {

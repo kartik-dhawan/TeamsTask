@@ -36,6 +36,9 @@
                         &:nth-child(5){
                             width: 20rem;
                         }
+                        &:nth-child(6){
+                            width: 10rem;
+                        }
                     }
                 }
             }
@@ -45,12 +48,12 @@
                         @include center-flex(row);
                         .deleteButton{
                             cursor: pointer;
-                            padding: 4px 10px;
-                            width: 50%;
+                            padding: 0px;
+                            margin: 0px 4px;
+                            min-width: 40px;
+                            min-height: 40px;
                             background-color: map-get($map: $bg-colors, $key: 'third');
                             color: map-get($map: $colors, $key: 'primary');
-                            font-weight: 500;
-                            letter-spacing: 0.5px;
                             border-radius: 20px;
                             border: 1.5px solid map-get($map: $colors, $key: 'third');
                             transition: 200ms all ease;
@@ -58,6 +61,10 @@
                             background-color: map-get($map: $colors, $key: 'primary');
                             color: map-get($map: $colors, $key: 'third');
                             border: 1.5px solid map-get($map: $colors, $key: 'third');
+                            }
+                            .MuiSvgIcon-root{
+                                font-size: 22px;
+                                padding: 0px;
                             }
                         }
                     }
@@ -73,6 +80,15 @@
                         }
                         &:nth-child(3){
                             min-width: 8rem;
+                        }
+                        &:nth-child(4){
+                            width: 10rem;
+                        }
+                        &:nth-child(5){
+                            width: 20rem;
+                        }
+                        &:nth-child(6){
+                            min-width: 10rem;
                         }
                     }
                 }
