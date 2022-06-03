@@ -21,6 +21,7 @@ import { RootType } from "../../redux/store/store";
 import { KeyboardArrowRight, KeyboardArrowLeft } from "@mui/icons-material";
 import FirstPageIcon from "@mui/icons-material/FirstPage";
 import LastPageIcon from "@mui/icons-material/LastPage";
+import { updateData } from "../../redux/reducers/searchSlice";
 
 // pagination
 interface TablePaginationActionsProps {
@@ -121,7 +122,7 @@ const TeamsDataTable = () => {
     web_pages: any[];
   }
 
-  const datalog: any[] = useSelector(
+  let datalog: any[] = useSelector(
     (state: RootType) => state.search.updatedData
   ).slice(0, 50);
 
@@ -191,6 +192,13 @@ const TeamsDataTable = () => {
   const sortHandler = (property: any) => (event: any) => {
     handleRequestSort(event, property);
   };
+
+  // deleting a record
+
+  const rowrecord: any = useSelector((state: RootType) => state.uni.uniData);
+  datalog = datalog.filter((row) => {
+    return row.name != rowrecord.name;
+  });
 
   return (
     <div className="data-table">
@@ -267,6 +275,14 @@ const TeamsDataTable = () => {
               <TableCell padding="normal" align="center" className="uniColumn">
                 Website
               </TableCell>
+              <TableCell
+                padding="normal"
+                align="center"
+                className="uniColumn"
+                style={{ paddingRight: "30px", paddingLeft: "30px" }}
+              >
+                Delete
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody className="uniTableBody">
@@ -297,7 +313,6 @@ const TeamsDataTable = () => {
                       onClick={(e) => {
                         e.preventDefault();
                         dispatch(getUniData(row));
-                        console.log("hello");
                         navigate("/home/details");
                       }}
                     >
@@ -307,6 +322,7 @@ const TeamsDataTable = () => {
                       padding="normal"
                       align="center"
                       className="uniColumn"
+                      onClick={() => console.log("deleted")}
                     >
                       {row.domains ? row.domains[0] : ""}
                     </TableCell>
@@ -327,6 +343,18 @@ const TeamsDataTable = () => {
                       ) : (
                         ""
                       )}
+                    </TableCell>
+                    <TableCell
+                      padding="normal"
+                      align="center"
+                      className="uniColumn deleteContainer"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        dispatch(getUniData(row));
+                        dispatch(updateData(datalog));
+                      }}
+                    >
+                      <div className="deleteButton">Delete</div>
                     </TableCell>
                   </TableRow>
                 ))}
