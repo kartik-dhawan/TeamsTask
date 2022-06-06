@@ -27,7 +27,7 @@ import FirstPageIcon from "@mui/icons-material/FirstPage";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import { updateData } from "../../redux/reducers/searchSlice";
 import { getUniUpdatedData } from "../../redux/reducers/updateUniSlice";
-
+import UpdateRecordForm from "../Home/UpdateRecordForm";
 // pagination
 interface TablePaginationActionsProps {
   count: number;
@@ -388,7 +388,6 @@ const TeamsDataTable = () => {
                       <div
                         onClick={() => {
                           dispatch(getUniUpdatedData(row));
-                          console.log(rowToUpdate.name);
                         }}
                       >
                         <Button
@@ -451,8 +450,15 @@ const TeamsDataTable = () => {
         anchor={"right"}
         open={updateRowToggle}
         onClose={toggleDrawer("right", false)}
+        className="drawerComponent"
       >
-        {rowToUpdate.name}
+        <UpdateRecordForm
+          alpha={rowToUpdate.alpha_two_code}
+          name={rowToUpdate.name}
+          domains={rowToUpdate.domains}
+          country={rowToUpdate.country}
+          website={rowToUpdate.web_pages}
+        />
       </Drawer>
     </div>
   );
