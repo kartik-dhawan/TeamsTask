@@ -3,6 +3,9 @@ import TextField from "@mui/material/TextField";
 import { Button, ButtonGroup, InputLabel } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { RootType } from "../../redux/store/store";
+import { getFinalData } from "../../redux/reducers/updateSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface PropsType {
   alpha: string;
@@ -19,7 +22,11 @@ const UpdateRecordForm = (props: PropsType) => {
   const [website, setWebsite] = useState(props.website[0]);
 
   const dispatch = useDispatch();
-  const datalog = useSelector((state: RootType) => state.search.updatedData);
+  const datalog = useSelector((state: RootType) => state.data.data).slice(
+    0,
+    50
+  );
+  const afterDelete = useSelector((state: RootType) => state.uni.deletedRows);
 
   interface UpdatedType {
     alpha_two_code: string;
@@ -39,10 +46,17 @@ const UpdateRecordForm = (props: PropsType) => {
 
   const up = () => {
     const index = datalog.findIndex((row) => row.name === updatedRow.name);
-    // datalog[index].alpha_two_code = updatedRow.alpha_two_code;
-    console.log(datalog[index]);
-    // datalog.splice(index - 1, 1, updatedRow);
+    datalog[index] = updatedRow;
+
+    return datalog.filter((dl) => {
+      return !afterDelete.find((adel) => {
+        return dl.name === adel.name;
+      });
+    });
   };
+
+  // updation notification
+  const updateNotify = () => toast(`Record Updated!`);
 
   return (
     <form className="updateForm">
@@ -113,9 +127,46 @@ const UpdateRecordForm = (props: PropsType) => {
         }}
       />
 
-      <ButtonGroup>
-        <Button onClick={() => up()}>Update</Button>
-        <Button onClick={() => {}}>Delete</Button>
+      <ButtonGroup
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          margin: "20px",
+        }}
+      >
+        <Button
+          sx={{
+            backgroundColor: "rgb(31, 58, 147)",
+          }}
+          variant="contained"
+          onClick={() => {
+            dispatch(getFinalData(up()));
+            updateNotify();
+          }}
+        >
+          Update
+        </Button>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+        <Button
+          sx={{
+            borderColor: "rgb(31, 58, 147)",
+            color: "rgb(31, 58, 147)",
+          }}
+          onClick={() => {}}
+        >
+          Cancel
+        </Button>
       </ButtonGroup>
     </form>
   );

@@ -15,6 +15,8 @@ import {
   TableSortLabel,
   useTheme,
 } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getData } from "../../redux/reducers/apiSlice";
@@ -158,35 +160,36 @@ const TeamsDataTable = () => {
   const [sortValue, setSortValue] = useState("uni");
   const [order, setOrder] = useState<"asc" | "desc">("asc");
 
-  function compareByName(a: data, b: data) {
-    if (a.name < b.name) {
-      return -1;
+  const dataSort = () => {
+    function compareByName(a: data, b: data) {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
     }
-    if (a.name > b.name) {
-      return 1;
-    }
-    return 0;
-  }
 
-  function compareByDomain(a: data, b: data) {
-    if (a.domains[0] < b.domains[0]) {
-      return -1;
+    function compareByDomain(a: data, b: data) {
+      if (a.domains[0] < b.domains[0]) {
+        return -1;
+      }
+      if (a.domains[0] > b.domains[0]) {
+        return 1;
+      }
+      return 0;
     }
-    if (a.domains[0] > b.domains[0]) {
-      return 1;
+    if (order === "asc" && sortValue === "uni") {
+      datalog.sort(compareByName);
+    } else if (order === "desc" && sortValue === "uni") {
+      datalog.sort(compareByName).reverse();
+    } else if (order === "asc" && sortValue === "dom") {
+      datalog.sort(compareByDomain);
+    } else if (order === "desc" && sortValue === "dom") {
+      datalog.sort(compareByDomain).reverse();
     }
-    return 0;
-  }
-
-  if (order === "asc" && sortValue === "uni") {
-    datalog.sort(compareByName);
-  } else if (order === "desc" && sortValue === "uni") {
-    datalog.sort(compareByName).reverse();
-  } else if (order === "asc" && sortValue === "dom") {
-    datalog.sort(compareByDomain);
-  } else if (order === "desc" && sortValue === "dom") {
-    datalog.sort(compareByDomain).reverse();
-  }
+  };
 
   const handleRequestSort = (event: any, property: any) => {
     const isAscending = sortValue === property && order === "asc";
@@ -205,9 +208,23 @@ const TeamsDataTable = () => {
     (state: RootType) => state.updateUni.uniData
   );
 
-  datalog = datalog.filter((row) => {
-    return row.name != rowToDelete.name;
-  });
+  const updatedInfoData: any[] = useSelector(
+    (state: RootType) => state.updateRecord.afterDeleteUpdate
+  );
+
+  if (updatedInfoData.length == 0) {
+    datalog = datalog.filter((row) => {
+      return row.name != rowToDelete.name;
+    });
+    dataSort();
+    console.log(datalog);
+  } else {
+    datalog = updatedInfoData;
+    console.log(datalog);
+    // dataSort();
+  }
+
+  const notify = () => toast(`University removed!`);
 
   // updating a record
   const [updateRowToggle, setUpdateRowToggle] = useState(false);
@@ -229,6 +246,9 @@ const TeamsDataTable = () => {
   return (
     <div className="data-table">
       {/* data table */}
+
+      {/* Same as */}
+      <ToastContainer />
 
       <TableContainer component={Paper} className="uniData">
         <Table
@@ -383,7 +403,18 @@ const TeamsDataTable = () => {
                           dispatch(updateData(datalog));
                         }}
                       >
-                        <DeleteIcon />
+                        <DeleteIcon onClick={notify} />
+                        <ToastContainer
+                          position="top-right"
+                          autoClose={5000}
+                          hideProgressBar={false}
+                          newestOnTop={false}
+                          closeOnClick
+                          rtl={false}
+                          pauseOnFocusLoss
+                          draggable
+                          pauseOnHover
+                        />
                       </Button>
                       <div
                         onClick={() => {

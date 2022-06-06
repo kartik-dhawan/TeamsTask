@@ -17,11 +17,13 @@ const objs = {
 interface DataState {
   uniData: any;
   isLoading: boolean;
+  deletedRows: any[];
 }
 
 const initialState: DataState = {
   uniData: objs,
   isLoading: false,
+  deletedRows: [],
 };
 
 const uniSlice = createSlice({
@@ -30,6 +32,7 @@ const uniSlice = createSlice({
   reducers: {
     getUniData: (state: any, action: PayloadAction<any[]>) => {
       state.uniData = action.payload;
+      state.deletedRows = [...state.deletedRows, state.uniData];
     },
   },
 });
