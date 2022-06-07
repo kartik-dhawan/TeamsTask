@@ -1,3 +1,4 @@
+@import url(/Users/kartik.dhawan/react.js/TeamsTask/src/styling/utilities/utilities.css);
 .loader {
   height: 10vh;
   width: 100%;
@@ -810,6 +811,48 @@
   color: white;
   background-color: #1f3a93;
   border-radius: 50%;
+  -webkit-transition: 200ms all ease;
+  transition: 200ms all ease;
+}
+
+.MuiDrawer-paperAnchorRight .updateForm .closeUpdateDrawer:hover {
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+}
+
+.MuiDrawer-paperAnchorRight .updateForm .drawerActionButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 20px 0px;
+}
+
+.MuiDrawer-paperAnchorRight .updateForm .drawerActionButtons .cancelAction:hover {
+  background-color: rgba(255, 68, 0, 0.714);
+  color: white;
+  border-color: transparent;
+}
+
+.MuiDrawer-paperAnchorRight .updateForm .drawerActionButtons .updateAction:hover {
+  background-color: rgba(255, 68, 0, 0.714);
+  color: white;
+  border-color: transparent;
+}
+
+.Toastify__progress-bar {
+  visibility: hidden;
+}
+
+.Toastify__toast-container > div:nth-child(1) {
+  background-color: rgba(86, 188, 86, 0.848);
+}
+
+.Toastify__toast-body {
+  color: white;
+  font-size: 19px;
 }
 
 body {

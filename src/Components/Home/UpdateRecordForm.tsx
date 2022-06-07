@@ -25,6 +25,24 @@ const UpdateRecordForm = (props: PropsType) => {
   const [country, setCountry] = useState(props.country);
   const [website, setWebsite] = useState(props.website[0]);
 
+  interface classType {
+    success: string;
+    error: string;
+    info: string;
+    warning: string;
+    default: string;
+    dark: string;
+  }
+
+  const contextClass: classType = {
+    success: "bg-blue-600",
+    error: "bg-red-600",
+    info: "bg-gray-600",
+    warning: "bg-orange-400",
+    default: "bg-indigo-600",
+    dark: "bg-white-600 font-gray-300",
+  };
+
   const dispatch = useDispatch();
   let datalog: any[] = useSelector((state: RootType) => state.data.data).slice(
     0,
@@ -143,19 +161,29 @@ const UpdateRecordForm = (props: PropsType) => {
         }}
       />
 
-      <ButtonGroup
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          margin: "20px",
-        }}
-      >
+      <div className="drawerActionButtons">
         <Button
           sx={{
-            backgroundColor: "rgb(31, 58, 147)",
+            borderColor: "rgb(255, 69, 0)",
+            color: "rgb(255, 69, 0)",
+            margin: "0px 10px",
+            borderRadius: "2px",
+          }}
+          variant="outlined"
+          className="cancelAction"
+          onClick={() => {
+            props.setUpdateRowToggle(!props.updateRowToggle);
+          }}
+        >
+          Cancel
+        </Button>
+        <Button
+          sx={{
+            backgroundColor: "rgb(255, 69, 0)",
+            borderRadius: "2px",
           }}
           variant="contained"
+          className="updateAction"
           onClick={() => {
             dispatch(getFinalData(up()));
             dispatch(sendUpdateConfirmation(true));
@@ -166,7 +194,7 @@ const UpdateRecordForm = (props: PropsType) => {
         </Button>
         <ToastContainer
           position="top-right"
-          autoClose={5000}
+          autoClose={2000}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick
@@ -175,16 +203,7 @@ const UpdateRecordForm = (props: PropsType) => {
           draggable
           pauseOnHover
         />
-        <Button
-          sx={{
-            borderColor: "rgb(31, 58, 147)",
-            color: "rgb(31, 58, 147)",
-          }}
-          onClick={() => {}}
-        >
-          Cancel
-        </Button>
-      </ButtonGroup>
+      </div>
     </form>
   );
 };

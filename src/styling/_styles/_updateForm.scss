@@ -18,7 +18,48 @@
             color: map-get($map: $colors, $key: 'primary');
             background-color: map-get($map: $bg-colors, $key: 'primary');;
             border-radius: 50%;
+            transition: 200ms all ease;
+            &:hover{
+                transform: scale(1.08);
+            }
+        }
+        .drawerActionButtons{
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0px;
+            .cancelAction{
+                &:hover{
+                    background-color: rgba(255, 68, 0, 0.714);
+                    color: map-get($colors, 'primary');
+                    border-color: transparent;
+                }
+            }
+            .updateAction{
+                &:hover{
+                    background-color: rgba(255, 68, 0, 0.714);
+                    // color: rgb(130, 35, 0);
+                    color: map-get($map: $colors, $key: 'primary');
+                    border-color: transparent;
+                }
+            }
         }
     }
 }
 
+
+// toastify css
+
+.Toastify__progress-bar {
+    visibility: hidden;
+}
+
+.Toastify__toast-container {
+    & > div:nth-child(1){
+        background-color: rgba(86, 188, 86, 0.848);
+    }
+}
+
+.Toastify__toast-body {
+    color: white;
+    font-size: 19px;
+}
