@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootType } from "../../redux/store/store";
 import { getFinalData } from "../../redux/reducers/updateSlice";
 import { ToastContainer, toast } from "react-toastify";
+import { sendUpdateConfirmation } from "../../redux/reducers/searchSlice";
 import "react-toastify/dist/ReactToastify.css";
 
 interface PropsType {
@@ -22,21 +23,13 @@ const UpdateRecordForm = (props: PropsType) => {
   const [website, setWebsite] = useState(props.website[0]);
 
   const dispatch = useDispatch();
-  const datalog = useSelector((state: RootType) => state.data.data).slice(
+  let datalog: any[] = useSelector((state: RootType) => state.data.data).slice(
     0,
     50
   );
-  const afterDelete = useSelector((state: RootType) => state.uni.deletedRows);
+  let afterDelete = useSelector((state: RootType) => state.uni.deletedRows);
 
-  interface UpdatedType {
-    alpha_two_code: string;
-    domains: string[];
-    country: string;
-    name: string;
-    web_pages: string[];
-  }
-
-  const updatedRow = {
+  let updatedRow = {
     alpha_two_code: `${alpha}`,
     domains: [`${domain}`],
     country: `${country}`,
@@ -142,6 +135,7 @@ const UpdateRecordForm = (props: PropsType) => {
           variant="contained"
           onClick={() => {
             dispatch(getFinalData(up()));
+            dispatch(sendUpdateConfirmation(true));
             updateNotify();
           }}
         >

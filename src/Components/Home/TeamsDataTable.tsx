@@ -30,6 +30,7 @@ import LastPageIcon from "@mui/icons-material/LastPage";
 import { updateData } from "../../redux/reducers/searchSlice";
 import { getUniUpdatedData } from "../../redux/reducers/updateUniSlice";
 import UpdateRecordForm from "../Home/UpdateRecordForm";
+import { getDataToSearchFrom } from "../../redux/reducers/searchSlice";
 // pagination
 interface TablePaginationActionsProps {
   count: number;
@@ -112,12 +113,14 @@ function TablePaginationActions(props: TablePaginationActionsProps) {
 }
 
 // actual data table
-
-const TeamsDataTable = () => {
+interface propsType {
+  search: string;
+}
+const TeamsDataTable = (props: propsType) => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  console.log(props.search);
   useEffect(() => {
     dispatch(getData());
   }, [dispatch]);
@@ -172,6 +175,7 @@ const TeamsDataTable = () => {
     }
 
     function compareByDomain(a: data, b: data) {
+      console.log(a + " - " + b);
       if (a.domains[0] < b.domains[0]) {
         return -1;
       }
@@ -180,6 +184,7 @@ const TeamsDataTable = () => {
       }
       return 0;
     }
+
     if (order === "asc" && sortValue === "uni") {
       datalog.sort(compareByName);
     } else if (order === "desc" && sortValue === "uni") {
@@ -208,7 +213,7 @@ const TeamsDataTable = () => {
     (state: RootType) => state.updateUni.uniData
   );
 
-  const updatedInfoData: any[] = useSelector(
+  let updatedInfoData: any[] = useSelector(
     (state: RootType) => state.updateRecord.afterDeleteUpdate
   );
 
@@ -217,11 +222,23 @@ const TeamsDataTable = () => {
       return row.name != rowToDelete.name;
     });
     dataSort();
-    console.log(datalog);
   } else {
-    datalog = updatedInfoData;
-    console.log(datalog);
-    // dataSort();
+    const temp = [...updatedInfoData];
+    datalog = temp.filter((row) => {
+      return row.name != rowToDelete.name;
+    });
+    dataSort();
+    if (props.search) {
+      datalog = datalog.filter((row) => {
+        return (
+          row.name.toLowerCase().includes(props.search.toLowerCase()) ||
+          row.domains[0].toLowerCase().includes(props.search.toLowerCase())
+        );
+      });
+    } else {
+      datalog = datalog;
+    }
+    dispatch(getDataToSearchFrom(datalog));
   }
 
   const notify = () => toast(`University removed!`);
