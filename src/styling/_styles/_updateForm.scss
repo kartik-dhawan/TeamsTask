@@ -7,6 +7,18 @@
         .updateTextField{
             margin: 8px 5px;
         }
+        .closeUpdateDrawer{
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 10px;
+            font-size: 19px;
+            padding: 3px;
+            color: map-get($map: $colors, $key: 'primary');
+            background-color: map-get($map: $bg-colors, $key: 'primary');;
+            border-radius: 50%;
+        }
     }
 }
 

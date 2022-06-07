@@ -120,7 +120,6 @@ const TeamsDataTable = (props: propsType) => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(props.search);
   useEffect(() => {
     dispatch(getData());
   }, [dispatch]);
@@ -163,7 +162,7 @@ const TeamsDataTable = (props: propsType) => {
   const [sortValue, setSortValue] = useState("uni");
   const [order, setOrder] = useState<"asc" | "desc">("asc");
 
-  const dataSort = () => {
+  const dataSort = (): void => {
     function compareByName(a: data, b: data) {
       if (a.name < b.name) {
         return -1;
@@ -196,7 +195,7 @@ const TeamsDataTable = (props: propsType) => {
     }
   };
 
-  const handleRequestSort = (event: any, property: any) => {
+  const handleRequestSort = (_event: any, property: any) => {
     const isAscending = sortValue === property && order === "asc";
     setSortValue(property);
     setOrder(isAscending ? "desc" : "asc");
@@ -219,13 +218,13 @@ const TeamsDataTable = (props: propsType) => {
 
   if (updatedInfoData.length == 0) {
     datalog = datalog.filter((row) => {
-      return row.name != rowToDelete.name;
+      return row.name !== rowToDelete.name;
     });
     dataSort();
   } else {
     const temp = [...updatedInfoData];
     datalog = temp.filter((row) => {
-      return row.name != rowToDelete.name;
+      return row.name !== rowToDelete.name;
     });
     dataSort();
     if (props.search) {
@@ -381,7 +380,7 @@ const TeamsDataTable = (props: propsType) => {
                         navigate("/home/details");
                       }}
                     >
-                      <a href="#">{row.name}</a>
+                      <a href="">{row.name}</a>
                     </TableCell>
                     <TableCell
                       padding="normal"
@@ -506,6 +505,8 @@ const TeamsDataTable = (props: propsType) => {
           domains={rowToUpdate.domains}
           country={rowToUpdate.country}
           website={rowToUpdate.web_pages}
+          updateRowToggle={updateRowToggle}
+          setUpdateRowToggle={setUpdateRowToggle}
         />
       </Drawer>
     </div>

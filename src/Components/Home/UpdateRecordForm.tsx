@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-import { Button, ButtonGroup, InputLabel } from "@mui/material";
+import { Button, ButtonGroup, InputLabel, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { RootType } from "../../redux/store/store";
 import { getFinalData } from "../../redux/reducers/updateSlice";
 import { ToastContainer, toast } from "react-toastify";
 import { sendUpdateConfirmation } from "../../redux/reducers/searchSlice";
 import "react-toastify/dist/ReactToastify.css";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface PropsType {
   alpha: string;
@@ -14,6 +15,8 @@ interface PropsType {
   domains: string[];
   country: string;
   website: string[];
+  updateRowToggle: any;
+  setUpdateRowToggle: any;
 }
 
 const UpdateRecordForm = (props: PropsType) => {
@@ -53,6 +56,26 @@ const UpdateRecordForm = (props: PropsType) => {
 
   return (
     <form className="updateForm">
+      <CloseIcon
+        className="closeUpdateDrawer"
+        onClick={() => {
+          props.setUpdateRowToggle(!props.updateRowToggle);
+        }}
+      />
+
+      <Typography
+        sx={{
+          margin: "28px 0px",
+          fontSize: "25px",
+          width: "max-content",
+          borderBottom: "1px solid rgb(31, 58, 147)",
+          paddingRight: "40px",
+          color: "rgb(31, 58, 147)",
+        }}
+      >
+        UPDATE THE RECORD
+      </Typography>
+
       <InputLabel htmlFor="updateAlpha" sx={{ fontSize: "14px" }}>
         Alpha Code
       </InputLabel>

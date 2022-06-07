@@ -799,6 +799,19 @@
   margin: 8px 5px;
 }
 
+.MuiDrawer-paperAnchorRight .updateForm .closeUpdateDrawer {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  font-size: 19px;
+  padding: 3px;
+  color: white;
+  background-color: #1f3a93;
+  border-radius: 50%;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
