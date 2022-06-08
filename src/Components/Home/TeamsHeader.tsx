@@ -6,11 +6,11 @@ const TeamsHeader = () => {
     <div className="teamsHeader">
       <div className="teamsHeaderContent">
         <Typography variant="h4" gutterBottom className="teamsHeaderTitle">
-          Manage Your Team
+          Manage Your University
         </Typography>
         <Typography variant="body1" className="teamsHeaderText">
-          Give your Team Members the recognition they deserve and the ability to
-          edit Team listings.
+          Put enough trust in your work staff and give them the ability to edit
+          the university records.
         </Typography>
       </div>
     </div>

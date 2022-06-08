@@ -15,8 +15,6 @@ import {
   TableSortLabel,
   useTheme,
 } from "@mui/material";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getData } from "../../redux/reducers/apiSlice";
@@ -31,6 +29,9 @@ import { updateData } from "../../redux/reducers/searchSlice";
 import { getUniUpdatedData } from "../../redux/reducers/updateUniSlice";
 import UpdateRecordForm from "../Home/UpdateRecordForm";
 import { getDataToSearchFrom } from "../../redux/reducers/searchSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // pagination
 interface TablePaginationActionsProps {
   count: number;
@@ -195,13 +196,13 @@ const TeamsDataTable = (props: propsType) => {
     }
   };
 
-  const handleRequestSort = (_event: any, property: any) => {
+  const handleRequestSort = (_event: any, property: string) => {
     const isAscending = sortValue === property && order === "asc";
     setSortValue(property);
     setOrder(isAscending ? "desc" : "asc");
   };
 
-  const sortHandler = (property: any) => (event: any) => {
+  const sortHandler = (property: string) => (event: any) => {
     handleRequestSort(event, property);
   };
 
@@ -240,8 +241,6 @@ const TeamsDataTable = (props: propsType) => {
     dispatch(getDataToSearchFrom(datalog));
   }
 
-  const notify = () => toast(`University removed!`);
-
   // updating a record
   const [updateRowToggle, setUpdateRowToggle] = useState(false);
   type Anchor = "top" | "left" | "bottom" | "right";
@@ -259,12 +258,33 @@ const TeamsDataTable = (props: propsType) => {
       setUpdateRowToggle(!updateRowToggle);
     };
 
+  // Toast notif
+  const deleteNotify = () =>
+    toast.success("Record Deleted", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
   return (
     <div className="data-table">
       {/* data table */}
 
-      {/* Same as */}
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
 
       <TableContainer component={Paper} className="uniData">
         <Table
@@ -345,7 +365,7 @@ const TeamsDataTable = (props: propsType) => {
                 className="uniColumn"
                 style={{ paddingRight: "30px", paddingLeft: "30px" }}
               >
-                Delete
+                Action
               </TableCell>
             </TableRow>
           </TableHead>
@@ -419,18 +439,7 @@ const TeamsDataTable = (props: propsType) => {
                           dispatch(updateData(datalog));
                         }}
                       >
-                        <DeleteIcon onClick={notify} />
-                        <ToastContainer
-                          position="top-right"
-                          autoClose={5000}
-                          hideProgressBar={false}
-                          newestOnTop={false}
-                          closeOnClick
-                          rtl={false}
-                          pauseOnFocusLoss
-                          draggable
-                          pauseOnHover
-                        />
+                        <DeleteIcon onClick={deleteNotify} />
                       </Button>
                       <div
                         onClick={() => {

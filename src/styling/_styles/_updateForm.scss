@@ -4,8 +4,31 @@
         @include center-grid;
         grid-template-columns: 1fr;
         margin: 3rem 2rem;
+        .updateFormHeader{
+            transition: 1000ms all ease;
+            .toolTip{
+                position: absolute;
+                right: 30px;
+                top: 90px;
+                height: max-content;
+                width: 300px;
+                background-color: map-get($map: $bg-colors, $key: 'secondary');
+                z-index: 1000;
+                border-radius: 9px;
+                .inputInstructions{
+                    font-size: 14px;
+                    margin: 5px 9px;
+                    text-align: justify;
+                    padding: 5px 10px;
+                }
+            }
+        }
         .updateTextField{
             margin: 8px 5px;
+            height: 60px;
+            & p:nth-child(2){
+                color: rgba(211, 32, 32, 0.861);
+            }
         }
         .closeUpdateDrawer{
             cursor: pointer;
@@ -15,17 +38,17 @@
             margin: 10px;
             font-size: 19px;
             padding: 3px;
-            color: map-get($map: $colors, $key: 'primary');
-            background-color: map-get($map: $bg-colors, $key: 'primary');;
+            color: map-get($map: $colors, $key: 'secondary');
             border-radius: 50%;
             transition: 200ms all ease;
             &:hover{
                 transform: scale(1.08);
+                background-color: rgba(128, 128, 128, 0.173);
             }
         }
         .drawerActionButtons{
             display: flex;
-            align-items: flex-start;
+            justify-content: flex-end;
             margin: 20px 0px;
             .cancelAction{
                 &:hover{
@@ -44,22 +67,4 @@
             }
         }
     }
-}
-
-
-// toastify css
-
-.Toastify__progress-bar {
-    visibility: hidden;
-}
-
-.Toastify__toast-container {
-    & > div:nth-child(1){
-        background-color: rgba(86, 188, 86, 0.848);
-    }
-}
-
-.Toastify__toast-body {
-    color: white;
-    font-size: 19px;
 }
