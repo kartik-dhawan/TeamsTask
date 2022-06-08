@@ -27,6 +27,7 @@ const UpdateRecordForm = (props: PropsType) => {
   const [website, setWebsite] = useState(props.website[0]);
 
   // state for input check
+  const [alphaInputError, setAlphaInputError] = useState<string>("");
   const [domainInputError, setDomainInputError] = useState<string>("");
   const [countryInputError, setCountryInputError] = useState<string>("");
   const [websiteInputError, setWebsiteInputError] = useState<string>("");
@@ -161,7 +162,14 @@ const UpdateRecordForm = (props: PropsType) => {
         id="updateAlpha"
         onChange={(e) => {
           setAlpha(e.target.value.toUpperCase());
+          if (/^[a-zA-Z\s]+$/.test(e.target.value)) {
+            setAlphaInputError("");
+          } else {
+            setAlphaInputError("Incorrect Input. Please add a string value.");
+          }
         }}
+        helperText={alphaInputError}
+        required
       />
       <InputLabel htmlFor="updateUni" sx={{ fontSize: "14px" }}>
         University
@@ -195,6 +203,7 @@ const UpdateRecordForm = (props: PropsType) => {
           }
         }}
         helperText={domainInputError}
+        required
       />
 
       <InputLabel htmlFor="updateCountry" sx={{ fontSize: "14px" }}>
@@ -215,6 +224,7 @@ const UpdateRecordForm = (props: PropsType) => {
           }
         }}
         helperText={countryInputError}
+        required
       />
 
       <InputLabel htmlFor="updateWebsite" sx={{ fontSize: "14px" }}>
@@ -235,6 +245,7 @@ const UpdateRecordForm = (props: PropsType) => {
           }
         }}
         helperText={websiteInputError}
+        required
       />
 
       <div className="drawerActionButtons">

@@ -66,6 +66,8 @@ const DetailsPage = () => {
               <span className="circle"></span>
               <span className="circle"></span>
             </div>
+          ) : uni.name === "--- UNIVERSITY" ? (
+            ""
           ) : (
             details.map((record, index) => {
               return (
