@@ -1,3 +1,4 @@
+@import url(/Users/kartik.dhawan/react.js/TeamsTask/src/styling/utilities/utilities.css);
 .loader {
   height: 10vh;
   width: 100%;
@@ -19,14 +20,14 @@
 .loader > span {
   display: inline-block;
   background-color: rgba(128, 128, 128, 0.53);
-  height: 5px;
-  width: 5px;
+  height: 10px;
+  width: 10px;
   border-radius: 50%;
   margin: 0px 3px;
   -webkit-transform: translate3d(0);
           transform: translate3d(0);
-  -webkit-animation: bounce 0.6s infinite alternate;
-          animation: bounce 0.6s infinite alternate;
+  -webkit-animation: bounce 1s infinite alternate;
+          animation: bounce 1s infinite alternate;
 }
 
 @-webkit-keyframes bounce {
@@ -335,6 +336,51 @@
   width: 20rem;
 }
 
+.data-table .uniData .uniTable .uniTableHead .uniTableRowHead .uniColumn:nth-child(6) {
+  width: 10rem;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .deleteContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .deleteContainer .deleteButton {
+  cursor: pointer;
+  padding: 0px;
+  margin: 0px 4px;
+  min-width: 40px;
+  min-height: 40px;
+  background-color: orangered;
+  color: white;
+  border-radius: 20px;
+  border: 1.5px solid orangered;
+  -webkit-transition: 200ms all ease;
+  transition: 200ms all ease;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .deleteContainer .deleteButton:hover {
+  background-color: white;
+  color: orangered;
+  border: 1.5px solid orangered;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .deleteContainer .deleteButton .MuiSvgIcon-root {
+  font-size: 22px;
+  padding: 0px;
+}
+
 .data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn {
   font-size: 13px;
   padding: 18px 0px;
@@ -350,6 +396,18 @@
 
 .data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:nth-child(3) {
   min-width: 8rem;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:nth-child(4) {
+  width: 10rem;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:nth-child(5) {
+  width: 20rem;
+}
+
+.data-table .uniData .uniTable .uniTableBody .uniTableRow .uniColumn:nth-child(6) {
+  min-width: 10rem;
 }
 
 .data-table .uniData .uniTable .uniTableBody .pagination {
@@ -718,6 +776,83 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.MuiDrawer-paperAnchorRight {
+  width: 400px;
+}
+
+.MuiDrawer-paperAnchorRight .updateForm {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  margin: 3rem 2rem;
+}
+
+.MuiDrawer-paperAnchorRight .updateForm .updateTextField {
+  margin: 8px 5px;
+}
+
+.MuiDrawer-paperAnchorRight .updateForm .closeUpdateDrawer {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  font-size: 19px;
+  padding: 3px;
+  color: white;
+  background-color: #1f3a93;
+  border-radius: 50%;
+  -webkit-transition: 200ms all ease;
+  transition: 200ms all ease;
+}
+
+.MuiDrawer-paperAnchorRight .updateForm .closeUpdateDrawer:hover {
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+}
+
+.MuiDrawer-paperAnchorRight .updateForm .drawerActionButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 20px 0px;
+}
+
+.MuiDrawer-paperAnchorRight .updateForm .drawerActionButtons .cancelAction:hover {
+  background-color: rgba(255, 68, 0, 0.714);
+  color: white;
+  border-color: transparent;
+}
+
+.MuiDrawer-paperAnchorRight .updateForm .drawerActionButtons .updateAction:hover {
+  background-color: rgba(255, 68, 0, 0.714);
+  color: white;
+  border-color: transparent;
+}
+
+.Toastify__progress-bar {
+  visibility: hidden;
+}
+
+.Toastify__toast-container > div:nth-child(1) {
+  background-color: rgba(86, 188, 86, 0.848);
+}
+
+.Toastify__toast-body {
+  color: white;
+  font-size: 19px;
 }
 
 body {

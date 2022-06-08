@@ -12,11 +12,18 @@ import { updateData } from "../../redux/reducers/searchSlice";
 import { getData } from "../../redux/reducers/apiSlice";
 import { RootType } from "../../redux/store/store";
 
-const GlobalSearch = () => {
-  const [search, setSearch] = useState("");
-  const datalog = useSelector((state: RootType) => state.data.data).slice(
-    0,
-    50
+interface propsType {
+  search: string;
+  setSearch: any;
+}
+
+const GlobalSearch = (props: propsType) => {
+  // const [search, setSearch] = useState("");
+  let datalog = useSelector((state: RootType) => state.data.data).slice(0, 50);
+
+  const isUpdated = useSelector((state: RootType) => state.search.isUpdated);
+  let updatedInfoData: any[] = useSelector(
+    (state: RootType) => state.updateRecord.afterDeleteUpdate
   );
 
   const dispatch = useDispatch();
@@ -27,16 +34,25 @@ const GlobalSearch = () => {
 
   let updatedData: any[];
 
-  if (search) {
-    updatedData = datalog.filter((row) => {
-      return (
-        row.name.toLowerCase().includes(search.toLowerCase()) ||
-        row.domains[0].toLowerCase().includes(search.toLowerCase())
-      );
-    });
+  const searchAlgo = (data: any[]) => {
+    if (props.search) {
+      updatedData = data.filter((row) => {
+        return (
+          row.name.toLowerCase().includes(props.search.toLowerCase()) ||
+          row.domains[0].toLowerCase().includes(props.search.toLowerCase())
+        );
+      });
+      dispatch(updateData(updatedData));
+    } else {
+      updatedData = data;
+      dispatch(updateData(updatedData));
+    }
+  };
+
+  if (isUpdated === true) {
+    searchAlgo(updatedInfoData);
   } else {
-    updatedData = datalog;
-    dispatch(updateData(updatedData));
+    searchAlgo(datalog);
   }
 
   return (
@@ -71,9 +87,9 @@ const GlobalSearch = () => {
             type="text"
             label="Password"
             className="searchInput"
-            value={search}
+            value={props.search}
             onChange={(e) => {
-              setSearch(e.target.value);
+              props.setSearch(e.target.value);
               dispatch(updateData(updatedData));
             }}
             endAdornment={

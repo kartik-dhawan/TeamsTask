@@ -3,6 +3,8 @@ import dataReducer from "../reducers/apiSlice";
 import searchReducer from "../reducers/searchSlice";
 import detailsReducer from "../reducers/detailsApiSlice";
 import uniReducer from "../reducers/uniSlice";
+import updateUniReducer from "../reducers/updateUniSlice";
+import updatedRecordReducer from "../reducers/updateSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +12,8 @@ const store = configureStore({
     search: searchReducer,
     details: detailsReducer,
     uni: uniReducer,
+    updateUni: updateUniReducer,
+    updateRecord: updatedRecordReducer,
   },
 });
 

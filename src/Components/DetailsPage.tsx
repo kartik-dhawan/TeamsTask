@@ -11,8 +11,6 @@ const DetailsPage = () => {
   const uni = useSelector((state: RootType) => state.uni.uniData);
   const loader = useSelector((state: RootType) => state.uni.isLoading);
 
-  console.log(loader);
-
   const dispatch = useDispatch();
 
   useEffect(() => {

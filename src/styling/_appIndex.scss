@@ -2,6 +2,7 @@
 @import './utilities/variables';
 @import './utilities/mixins';
 @import './utilities/responsive';
+@import './utilities/utilities.css';
 
 
 // responsive style import
@@ -16,4 +17,4 @@
 @import './_styles/teamsDataTable';
 @import './_styles/globalSearch';
 @import './_styles/detailsPage';
-
+@import './_styles/updateForm'

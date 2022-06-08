@@ -17,26 +17,23 @@ const objs = {
 interface DataState {
   uniData: any;
   isLoading: boolean;
-  deletedRows: any[];
 }
 
 const initialState: DataState = {
   uniData: objs,
   isLoading: false,
-  deletedRows: [],
 };
 
-const uniSlice = createSlice({
+const updateUniSlice = createSlice({
   name: "specific-uni-data",
   initialState,
   reducers: {
-    getUniData: (state: any, action: PayloadAction<any[]>) => {
+    getUniUpdatedData: (state: any, action: PayloadAction<any[]>) => {
       state.uniData = action.payload;
-      state.deletedRows = [...state.deletedRows, state.uniData];
     },
   },
 });
 
-export const { getUniData } = uniSlice.actions;
+export const { getUniUpdatedData } = updateUniSlice.actions;
 
-export default uniSlice.reducer;
+export default updateUniSlice.reducer;
