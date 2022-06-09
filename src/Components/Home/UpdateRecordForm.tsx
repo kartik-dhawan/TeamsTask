@@ -46,15 +46,6 @@ const UpdateRecordForm = (props: PropsType) => {
     dark: string;
   }
 
-  const contextClass: classType = {
-    success: "bg-blue-600",
-    error: "bg-red-600",
-    info: "bg-gray-600",
-    warning: "bg-orange-400",
-    default: "bg-indigo-600",
-    dark: "bg-white-600 font-gray-300",
-  };
-
   const dispatch = useDispatch();
   let datalog: any[] = useSelector((state: RootType) => state.data.data).slice(
     0,
@@ -106,7 +97,7 @@ const UpdateRecordForm = (props: PropsType) => {
       <Typography
         className="updateFormHeader"
         sx={{
-          margin: "5px 0px 27px 0px",
+          margin: "9px 0px 15px 0px",
           fontSize: "21px",
           width: "max-content",
           borderBottom: "1px solid grey",
