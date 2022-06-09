@@ -4,10 +4,11 @@ import { Button, ButtonGroup, InputLabel, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { RootType } from "../../redux/store/store";
 import { getFinalData } from "../../redux/reducers/updateSlice";
-import { ToastContainer, toast } from "react-toastify";
 import { sendUpdateConfirmation } from "../../redux/reducers/searchSlice";
-import "react-toastify/dist/ReactToastify.css";
 import CloseIcon from "@mui/icons-material/Close";
+import HelpIcon from "@mui/icons-material/Help";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface PropsType {
   alpha: string;
@@ -25,6 +26,17 @@ const UpdateRecordForm = (props: PropsType) => {
   const [country, setCountry] = useState(props.country);
   const [website, setWebsite] = useState(props.website[0]);
 
+  // state for input check
+  const [alphaInputError, setAlphaInputError] = useState<string>("");
+  const [domainInputError, setDomainInputError] = useState<string>("");
+  const [countryInputError, setCountryInputError] = useState<string>("");
+  const [websiteInputError, setWebsiteInputError] = useState<string>("");
+  const inputErrorMessage: string =
+    "Incorrect input. Click on '?' icon for instructions";
+
+  // tooltip visibility toggle
+  const [visibility, setVisibility] = useState<boolean>(false);
+
   interface classType {
     success: string;
     error: string;
@@ -33,15 +45,6 @@ const UpdateRecordForm = (props: PropsType) => {
     default: string;
     dark: string;
   }
-
-  const contextClass: classType = {
-    success: "bg-blue-600",
-    error: "bg-red-600",
-    info: "bg-gray-600",
-    warning: "bg-orange-400",
-    default: "bg-indigo-600",
-    dark: "bg-white-600 font-gray-300",
-  };
 
   const dispatch = useDispatch();
   let datalog: any[] = useSelector((state: RootType) => state.data.data).slice(
@@ -70,7 +73,17 @@ const UpdateRecordForm = (props: PropsType) => {
   };
 
   // updation notification
-  const updateNotify = () => toast(`Record Updated!`);
+  const updateNotify = () => {
+    toast.success("Record Updated", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   return (
     <form className="updateForm">
@@ -82,16 +95,51 @@ const UpdateRecordForm = (props: PropsType) => {
       />
 
       <Typography
+        className="updateFormHeader"
         sx={{
-          margin: "28px 0px",
-          fontSize: "25px",
+          margin: "9px 0px 15px 0px",
+          fontSize: "21px",
           width: "max-content",
-          borderBottom: "1px solid rgb(31, 58, 147)",
-          paddingRight: "40px",
+          borderBottom: "1px solid grey",
+          // paddingRight: "30px",
           color: "rgb(31, 58, 147)",
+          display: "flex",
+          alignItems: "center",
         }}
       >
         UPDATE THE RECORD
+        <HelpIcon
+          className="instructionsIcon"
+          sx={{
+            margin: "auto 0px auto 10px",
+            paddingLeft: "95px",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            console.log("hello");
+            setVisibility(!visibility);
+          }}
+        />
+        {visibility ? (
+          <div className="toolTip" style={{ display: "inline-block" }}>
+            <div className="inputInstructions">
+              1. The Alpha Code shall always be in capital letters
+            </div>
+            <div className="inputInstructions">
+              2. The domain name shall always end with '.edu'.
+            </div>
+            <div className="inputInstructions">
+              3. The country name input field will only accept string values.
+            </div>
+            <div className="inputInstructions">
+              4. The website url must start with 'https://www.'.
+            </div>
+          </div>
+        ) : (
+          <div className="toolTip" style={{ display: "none" }}>
+            Hello
+          </div>
+        )}
       </Typography>
 
       <InputLabel htmlFor="updateAlpha" sx={{ fontSize: "14px" }}>
@@ -104,8 +152,15 @@ const UpdateRecordForm = (props: PropsType) => {
         className="updateTextField"
         id="updateAlpha"
         onChange={(e) => {
-          setAlpha(e.target.value);
+          setAlpha(e.target.value.toUpperCase());
+          if (/^[a-zA-Z\s]+$/.test(e.target.value)) {
+            setAlphaInputError("");
+          } else {
+            setAlphaInputError("Incorrect Input. Please add a string value.");
+          }
         }}
+        helperText={alphaInputError}
+        required
       />
       <InputLabel htmlFor="updateUni" sx={{ fontSize: "14px" }}>
         University
@@ -117,6 +172,7 @@ const UpdateRecordForm = (props: PropsType) => {
         type={"text"}
         value={props.name}
         disabled
+        helperText="University name cannot be updated"
       />
 
       <InputLabel htmlFor="updateDomain" sx={{ fontSize: "14px" }}>
@@ -130,7 +186,15 @@ const UpdateRecordForm = (props: PropsType) => {
         value={domain}
         onChange={(e) => {
           setDomain(e.target.value);
+          if (e.target.value.endsWith(".edu")) {
+            setDomain(e.target.value);
+            setDomainInputError("");
+          } else {
+            setDomainInputError(inputErrorMessage);
+          }
         }}
+        helperText={domainInputError}
+        required
       />
 
       <InputLabel htmlFor="updateCountry" sx={{ fontSize: "14px" }}>
@@ -144,7 +208,14 @@ const UpdateRecordForm = (props: PropsType) => {
         value={country}
         onChange={(e) => {
           setCountry(e.target.value);
+          if (!/^[a-zA-Z\s]+$/.test(e.target.value)) {
+            setCountryInputError(inputErrorMessage);
+          } else {
+            setCountryInputError("");
+          }
         }}
+        helperText={countryInputError}
+        required
       />
 
       <InputLabel htmlFor="updateWebsite" sx={{ fontSize: "14px" }}>
@@ -158,7 +229,14 @@ const UpdateRecordForm = (props: PropsType) => {
         value={website}
         onChange={(e) => {
           setWebsite(e.target.value);
+          if (e.target.value.startsWith("https://www.")) {
+            setWebsiteInputError("");
+          } else {
+            setWebsiteInputError(inputErrorMessage);
+          }
         }}
+        helperText={websiteInputError}
+        required
       />
 
       <div className="drawerActionButtons">
@@ -177,32 +255,36 @@ const UpdateRecordForm = (props: PropsType) => {
         >
           Cancel
         </Button>
-        <Button
-          sx={{
-            backgroundColor: "rgb(255, 69, 0)",
-            borderRadius: "2px",
-          }}
-          variant="contained"
-          className="updateAction"
-          onClick={() => {
-            dispatch(getFinalData(up()));
-            dispatch(sendUpdateConfirmation(true));
-            updateNotify();
-          }}
-        >
-          Update
-        </Button>
-        <ToastContainer
-          position="top-right"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
+        {domainInputError !== "" ||
+        websiteInputError !== "" ||
+        countryInputError !== "" ? (
+          <Button
+            sx={{
+              borderRadius: "2px",
+            }}
+            variant="contained"
+            className="updateAction"
+            disabled
+          >
+            Update
+          </Button>
+        ) : (
+          <Button
+            sx={{
+              backgroundColor: "rgb(255, 69, 0)",
+              borderRadius: "2px",
+            }}
+            variant="contained"
+            className="updateAction"
+            onClick={() => {
+              dispatch(getFinalData(up()));
+              dispatch(sendUpdateConfirmation(true));
+              updateNotify();
+            }}
+          >
+            Update
+          </Button>
+        )}
       </div>
     </form>
   );

@@ -58,12 +58,13 @@ const GlobalSearch = (props: propsType) => {
   return (
     <div className="midSection">
       <div className="searchSection">
-        <div className="searchTitle">Team Black Panther</div>
+        <div className="searchTitle">Work Staff of North-Region</div>
         <div className="searchDescription">
-          Manage your Teams account, invite Team Members to join your Team and
-          set their permissions to edit listings and view production reports.
-          Manage your Teams account, invite Team Members to join your Team and
-          set their permissions to edit listings and view production reports.
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim
+          inventore, cupiditate adipisci corrupti voluptatibus tempora eveniet
+          nihil ullam, quo sunt quam, saepe delectus accusamus! Lorem, ipsum
+          dolor sit amet consectetur adipisicing elit. Ipsum, perferendis? Lorem
+          ipsum dolor sit. Lorem ipsum.
         </div>
 
         <FormControl
